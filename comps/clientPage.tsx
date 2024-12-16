@@ -42,8 +42,8 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
       {filter === "SETTINGS" && <Settings />}
       {filter !== "ABOUT ME" && filter !== "SETTINGS" && (
         filteredSubdirectories.map((subdir, index) => (
-          <Link href={subdir.metadata.url} key={index} passHref>
             <PageElement
+              key={index}
               title={subdir.metadata.title}
               location={subdir.metadata.location}
               date={subdir.metadata.date}
@@ -52,7 +52,6 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
               description={subdir.metadata.description}
               images={subdir.images}
             />
-          </Link>
         ))
       )}
     </div>

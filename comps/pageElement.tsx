@@ -18,6 +18,7 @@ const PageElement: React.FC<PageElementProps> = ({
   title,
   location,
   date,
+  url,
   images,
 }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,7 +60,7 @@ const PageElement: React.FC<PageElementProps> = ({
   }, []);
 
   return (
-    <div className={styles.elementContainer}>
+    <Link href={url} passHref className={styles.elementContainer}>
       <div className={styles.header}>
         <div className={styles.spanDiv}>
           <h3>{title}</h3>
@@ -80,14 +81,15 @@ const PageElement: React.FC<PageElementProps> = ({
 
       <div className={styles.imageGallery} ref={scrollRef}>
         {showLeftButton && (
-          <Link href="">
-            <button
-              className={`${styles.scrollButton} ${styles.left}`}
-              onClick={() => scroll("left")}
-            >
-              &#8592;
-            </button>
-          </Link>
+          <button
+            className={`${styles.scrollButton} ${styles.left}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scroll("left");
+            }}
+          >
+            &#8592;
+          </button>
         )}
         {images.map((image) => (
           <div key={image.id} className={styles.imageSection}>
@@ -102,17 +104,18 @@ const PageElement: React.FC<PageElementProps> = ({
           </div>
         ))}
         {showRightButton && (
-          <Link href="">
-            <button
-              className={`${styles.scrollButton} ${styles.right}`}
-              onClick={() => scroll("right")}
-            >
-              &#8594;
-            </button>
-          </Link>
+          <button
+            className={`${styles.scrollButton} ${styles.right}`}
+            onClick={(e) => {
+              e.preventDefault();
+              scroll("right");
+            }}
+          >
+            &#8594;
+          </button>
         )}
       </div>
-    </div>
+    </Link>
   );
 };
 

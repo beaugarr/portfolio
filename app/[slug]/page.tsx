@@ -52,7 +52,6 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
       <p><strong>Location:</strong> {metadata.location}</p>
       <p><strong>Date:</strong> {metadata.date}</p>
       <p><strong>Category:</strong> {metadata.category}</p>
-      <p><strong>URL:</strong> <a href={metadata.url}>{metadata.url}</a></p>
       <div dangerouslySetInnerHTML={{ __html: description }} />
       <div>
         <h2>Images</h2>
