@@ -1,0 +1,84 @@
+.container {
+  background-color: var(--color-background);
+  cursor: url("/cursor.svg"), auto;
+  padding: 40px;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8vw;
+}
+
+.gallery {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.textSection {
+  flex: 1;
+  /* background-color: rgb(15, 121, 86); */
+  overflow: hidden;
+}
+
+.imageSection {
+  flex-shrink: 0;
+  width: 100%;
+  height: auto;
+}
+
+.imageSectionImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensures the images maintain aspect ratio */
+}
+
+.title {
+  font-size: clamp(39.06px, 2.02vw + 15.99px, 56.83px);
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bar-background);
+  color: var(--color-text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-text);
+  color: var(--color-bar-background);
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.description h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-top: 20px;
+}
+
+.description ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.description li {
+  margin-bottom: 10px;
+}

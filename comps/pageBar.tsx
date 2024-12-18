@@ -1,5 +1,5 @@
 // components/PageBar.tsx
-"use client"; // This enables client-side rendering
+"use client";
 
 import React, { useState } from "react";
 import styles from "../styles/page.module.css";

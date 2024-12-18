@@ -1,12 +1,15 @@
 import path from "path";
 import fs from "fs";
 import { marked } from "marked";
+import styles from "@/styles/slug.module.css";
+import Image from "next/image";
 
 interface Metadata {
   title: string;
   location: string;
   date: string;
   category: string;
+  type: string;
   url: string;
   description: string;
 }
@@ -23,6 +26,7 @@ const fetchMetadata = (slug: string): Metadata => {
     location: "",
     date: "",
     category: "",
+    type: "",
     url: "",
     description: "",
   };
@@ -70,33 +74,32 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
   const metadata = fetchMetadata(slug);
 
   // Convert the description from Markdown to HTML
-  const description = await marked(metadata.description);
+  const description = marked(metadata.description);
 
   return (
-    <div style={{ color: "#000" }}>
-      <h1>{metadata.title}</h1>
-      <p>
-        <strong>Location:</strong> {metadata.location}
-      </p>
-      <p>
-        <strong>Date:</strong> {metadata.date}
-      </p>
-      <p>
-        <strong>Category:</strong> {metadata.category}
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: description }} />
-      <div>
-        <h2>Images</h2>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+    <div className={styles.container}>
+      <div className={styles.content}>
+        <div className={styles.gallery}>
           {images.map((image) => (
-            <img
-              key={image.id}
-              src={image.src}
-              alt={`Image ${image.id}`}
-              style={{ margin: "10px 0" }}
-            />
+            <div key={image.id} className={styles.imageSection}>
+              <Image
+                src={image.src}
+                alt={`Gallery Image ${image.id}`}
+                width={100}
+                height={100}
+                className={styles.imageSectionImage}
+                unoptimized={true}
+              />
+            </div>
           ))}
         </div>
+        <div className={styles.textSection}>
+          <h1 className={styles.title}>{metadata.title}</h1>
+          {/* Optionally add a button for online publication */}
+          {/* <button className={styles.button}>Visit online publication</button> */}
+        <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
+        </div>
+
       </div>
     </div>
   );
