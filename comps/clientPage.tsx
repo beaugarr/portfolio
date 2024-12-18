@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageBar from "@/comps/pageBar";
 import PageElement from "@/comps/pageElement";
 import styles from "@/styles/page.module.css";
@@ -35,13 +35,41 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
       ? subdirectories
       : subdirectories.filter((subdir) => subdir.metadata.category === filter);
 
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const pageBar = document.querySelector("#pageBar");
+
+    if (!pageBar) return;
+
+    const sentinel = document.createElement("div");
+    sentinel.style.height = "1px";
+    sentinel.style.width = "100%";
+    sentinel.style.position = "absolute";
+    pageBar.parentElement?.insertBefore(sentinel, pageBar);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsExpanded(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+      sentinel.remove();
+    };
+  }, []);
+
   return (
     <div className={styles.container}>
-      <PageBar onFilterChange={setFilter} />
-      {filter === "ABOUT ME" && <AboutMe />}
-      {filter === "SETTINGS" && <Settings />}
-      {filter !== "ABOUT ME" && filter !== "SETTINGS" && (
-        filteredSubdirectories.map((subdir, index) => (
+      <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
+      <div style={{ padding: "40px" }}>
+        {filter === "ABOUT ME" && <AboutMe />}
+        {filter === "SETTINGS" && <Settings />}
+        {filter !== "ABOUT ME" &&
+          filter !== "SETTINGS" &&
+          filteredSubdirectories.map((subdir, index) => (
             <PageElement
               key={index}
               title={subdir.metadata.title}
@@ -52,8 +80,8 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
               description={subdir.metadata.description}
               images={subdir.images}
             />
-        ))
-      )}
+          ))}
+      </div>
     </div>
   );
 };

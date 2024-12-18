@@ -6,9 +6,10 @@ import styles from "../styles/page.module.css";
 
 interface PageBarProps {
   onFilterChange: (filter: string | null) => void;
+  isExpanded: boolean;
 }
 
-const PageBar: React.FC<PageBarProps> = ({ onFilterChange }) => {
+const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleClick = (index: number) => {
@@ -32,7 +33,10 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange }) => {
   };
 
   return (
-    <div className={styles.bar}>
+    <div
+      id="pageBar"
+      className={`${styles.bar} ${isExpanded ? styles.expandedBar : ""}`}
+    >
       <div
         className={styles.barSection}
         style={{ flex: activeIndex === 1 ? 2 : 1 }} // 40% width if active, 20% if not
