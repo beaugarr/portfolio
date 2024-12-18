@@ -1,5 +1,5 @@
 .container {
-  background-color: white;
+  background-color: var(--color-background);
   user-select: none;
   cursor: url('/cursor.svg'), auto;
   padding-top: 40px;
@@ -8,8 +8,8 @@
 .bar {
   display: flex;
   text-align: center;
-  background-color: #f5f5f5;
-  color: black;
+  background-color: var(--color-bar-background);
+  color: var(--color-text);
   user-select: none;
   position: sticky;
   top: 0;
@@ -25,9 +25,9 @@
 .barSection {
   flex: 1;
   padding: 15px;
-  border: 1px solid #000;
+  border: 1px solid var(--color-border);
   border-right: none;
-  border-left: 0.25px solid #000;
+  border-left: 0.25px solid var(--color-border);
   cursor: pointer;
   transition: flex 0.3s ease, border 0.3s ease, border-left 0.3s ease;
   user-select: none;
@@ -39,19 +39,19 @@
 }
 
 .barSection:first-child {
-  border-left: 1px solid #000;
+  border-left: 1px solid var(--color-border);
 }
 
 .barSection:last-child {
-  border-right: 1px solid #000;
+  border-right: 1px solid var(--color-border);
 }
 
 .barSection:hover {
-  border: 1px solid rgba(126, 252, 0, 0.494);
+  border: 1px solid var(--color-hover-border);
 }
 
 .barSection:hover + .barSection {
-  border-left: 0.5px solid rgba(126, 252, 0, 0.494);
+  border-left: 0.5px solid var(--color-hover-border);
 }
 
 .barText {
@@ -64,22 +64,22 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #f5f5f5;
-  border: 1px solid #000;
+  background-color: var(--color-bar-background);
+  border: 1px solid var(--color-border);
   border-bottom: none;
   overflow: hidden;
   cursor: pointer;
 }
 
 .elementContainer:last-child {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.5px solid #000;
+  border-bottom: 0.5px solid var(--color-border);
   height: 50px;
 }
 
@@ -89,28 +89,28 @@
   height: 100%; /* Takes full height of the parent */
   align-items: flex-end; /* Aligns content to the bottom */
   justify-content: flex-start;
-  border-left: #000 0.5px solid;
+  border-left: 0.5px solid var(--color-border);
 }
 
 .spanDiv {
   display: flex; /* Keeps flex display for bottom alignment */
   align-items: flex-end; /* Aligns text to the bottom */
   height: 100%; /* Stretches span to full height of .details */
-  border-right: #000 0.5px solid; /* Vertical border */
+  border-right: 0.5px solid var(--color-border); /* Vertical border */
   padding-right: 40px; /* Space to the right */
   padding-left: 5px; /* Space to the left */
   position: relative; /* Needed for absolute positioning of inner text */
 }
 
 .spanDiv span {
-  color: #000;
+  color: var(--color-text);
 }
 
 .spanDiv h3 {
   font-size: 1rem;
   font-weight: bold;
   user-select: none;
-  color: #000;
+  color: var(--color-text);
 }
 
 .spanDiv:last-child {
@@ -118,7 +118,7 @@
 }
 
 .details strong {
-  color: #000;
+  color: var(--color-text);
 }
 
 .imageGallery {
@@ -133,8 +133,8 @@
   position: absolute;
   height: 400px;
   width: 50px;
-  background-color: #f5f5f5;
-  color: rgb(0, 0, 0);
+  background-color: var(--color-bar-background);
+  color: var(--color-text);
   border: none;
   cursor: pointer;
   z-index: 10;
