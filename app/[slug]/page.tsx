@@ -36,16 +36,22 @@ const fetchMetadata = (slug: string): Metadata => {
 };
 
 // Function to generate metadata dynamically
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const metadata = fetchMetadata(params.slug);
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
+  const metadata = await fetchMetadata(slug);
   return {
     title: `${metadata.title} | Michał Zagajewski`,
   };
 }
 
 const SubPage = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = await params;
   const directoryPath = path.join(process.cwd(), "public", "content");
-  const subdirectoryPath = path.join(directoryPath, params.slug);
+  const subdirectoryPath = path.join(directoryPath, slug);
 
   if (
     !fs.existsSync(subdirectoryPath) ||
@@ -59,11 +65,9 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
     .filter((file) => /\.(jpg|jpeg|png|gif)$/.test(file))
     .map((file, index) => ({
       id: index + 1,
-      src: `/content/${params.slug}/${file}`,
+      src: `/content/${slug}/${file}`,
     }));
-
-  // Fetch metadata once
-  const metadata = fetchMetadata(params.slug);
+  const metadata = fetchMetadata(slug);
 
   // Convert the description from Markdown to HTML
   const description = await marked(metadata.description);
