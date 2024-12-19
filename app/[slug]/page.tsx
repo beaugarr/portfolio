@@ -4,6 +4,7 @@ import { marked } from "marked";
 import styles from "@/styles/slug.module.css";
 import Image from "next/image";
 import Footer from "@/comps/footer";
+import AnimatedText from "@/comps/animatedText";
 
 interface Metadata {
   title: string;
@@ -91,7 +92,10 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
           ))}
         </div>
         <div className={styles.textSection}>
-          <h1 className={styles.title}>{metadata.title}</h1>
+          <div className={styles.title}>
+            <AnimatedText text={metadata.title} />
+          </div>
+          {/* <h1 className={styles.title}>{metadata.title}</h1> */}
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: descriptionHTML }}

@@ -10,6 +10,8 @@
   --color-hover-border: rgba(126, 252, 0, 0.494);
 
   --standard-padding: 40px;
+  cursor: url('/cursor.svg');
+
 }
 
 @media (prefers-color-scheme: dark) {

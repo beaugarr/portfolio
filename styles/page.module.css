@@ -4,8 +4,8 @@
   min-height: 100vh;
   background-color: var(--color-background);
   user-select: none;
-  cursor: url('/cursor.svg'), auto;
   padding-top: var(--standard-padding);
+  cursor: url('/cursor.svg');
 }
 
 .mainContent {
