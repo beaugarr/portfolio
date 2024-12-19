@@ -1,8 +1,16 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: var(--color-background);
   user-select: none;
   cursor: url('/cursor.svg'), auto;
-  padding-top: 40px;
+  padding-top: var(--standard-padding);
+}
+
+.mainContent {
+  flex: 1;
+  padding: var(--standard-padding);
 }
 
 .bar {
@@ -14,7 +22,7 @@
   position: sticky;
   top: 0;
   z-index: 15;
-  margin: 0 40px;
+  margin: 0 var(--standard-padding);
   transition: margin 0.4s ease-in-out;
 }
 
@@ -97,7 +105,7 @@
   align-items: flex-end; /* Aligns text to the bottom */
   height: 100%; /* Stretches span to full height of .details */
   border-right: 0.5px solid var(--color-border); /* Vertical border */
-  padding-right: 40px; /* Space to the right */
+  padding-right: var(--standard-padding); /* Space to the right */
   padding-left: 5px; /* Space to the left */
   position: relative; /* Needed for absolute positioning of inner text */
 }
@@ -163,4 +171,35 @@
   height: 100%;
   width: auto;
   object-fit: cover; /* Ensures the images maintain aspect ratio */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bar-background);
+  border-top: 1px solid var(--color-border);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: var(--color-text);
+  padding: 1rem var(--standard-padding) 2rem var(--standard-padding);
+}
+
+.footerLeft p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.footerRight {
+  display: flex;
+  gap: 16px;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: #000;
+}
+
+.footerLink:hover {
+  text-decoration: underline;
 }

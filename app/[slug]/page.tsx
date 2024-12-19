@@ -3,6 +3,7 @@ import fs from "fs";
 import { marked } from "marked";
 import styles from "@/styles/slug.module.css";
 import Image from "next/image";
+import Footer from "@/comps/footer";
 
 interface Metadata {
   title: string;
@@ -14,12 +15,10 @@ interface Metadata {
   description: string;
 }
 
-// Function to fetch metadata
 const fetchMetadata = (slug: string): Metadata => {
   const directoryPath = path.join(process.cwd(), "public", "content");
   const subdirectoryPath = path.join(directoryPath, slug);
-  const metadataFile = "metadata.json";
-  const metadataPath = path.join(subdirectoryPath, metadataFile);
+  const metadataPath = path.join(subdirectoryPath, "metadata.json");
 
   let metadata: Metadata = {
     title: "Untitled",
@@ -39,14 +38,13 @@ const fetchMetadata = (slug: string): Metadata => {
   return metadata;
 };
 
-// Function to generate metadata dynamically
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }) {
   const { slug } = await params;
-  const metadata = await fetchMetadata(slug);
+  const metadata = fetchMetadata(slug);
   return {
     title: `${metadata.title} | Michał Zagajewski`,
   };
@@ -73,8 +71,7 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
     }));
   const metadata = fetchMetadata(slug);
 
-  // Convert the description from Markdown to HTML
-  const description = marked(metadata.description);
+  const descriptionHTML = marked(metadata.description);
 
   return (
     <div className={styles.container}>
@@ -88,19 +85,20 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
                 width={100}
                 height={100}
                 className={styles.imageSectionImage}
-                unoptimized={true}
+                unoptimized
               />
             </div>
           ))}
         </div>
         <div className={styles.textSection}>
           <h1 className={styles.title}>{metadata.title}</h1>
-          {/* Optionally add a button for online publication */}
-          {/* <button className={styles.button}>Visit online publication</button> */}
-        <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
+          <div
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: descriptionHTML }}
+          />
         </div>
-
       </div>
+      <Footer />
     </div>
   );
 };

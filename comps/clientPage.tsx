@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import PageBar from "@/comps/pageBar";
 import PageElement from "@/comps/pageElement";
 import styles from "@/styles/page.module.css";
-import Link from "next/link";
 import AboutMe from "./aboutMe";
 import Settings from "./settings";
+import Footer from "./footer";
 
 interface Metadata {
   title: string;
@@ -64,7 +64,7 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
   return (
     <div className={styles.container}>
       <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
-      <div style={{ padding: "40px" }}>
+      <div className={styles.mainContent}>
         {filter === "ABOUT ME" && <AboutMe />}
         {filter === "SETTINGS" && <Settings />}
         {filter !== "ABOUT ME" &&
@@ -82,6 +82,7 @@ const ClientPage: React.FC<ClientPageProps> = ({ subdirectories }) => {
             />
           ))}
       </div>
+      <Footer />
     </div>
   );
 };

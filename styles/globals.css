@@ -8,6 +8,8 @@
   --color-text: black;
   --color-border: #000;
   --color-hover-border: rgba(126, 252, 0, 0.494);
+
+  --standard-padding: 40px;
 }
 
 @media (prefers-color-scheme: dark) {
