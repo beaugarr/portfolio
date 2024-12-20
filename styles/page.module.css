@@ -5,7 +5,7 @@
   background-color: var(--color-background);
   user-select: none;
   padding-top: var(--standard-padding);
-  cursor: url('/cursor.svg');
+  cursor: url("/cursor.svg"), auto;
 }
 
 .mainContent {
@@ -27,7 +27,7 @@
 }
 
 .expandedBar {
-  margin: 0; /* Expanded: remove side margins */
+  margin: 0;
 }
 
 .barSection {
@@ -63,8 +63,8 @@
 }
 
 .barText {
+  font-family: var(--font-cera);
   font-size: 13px;
-  font-weight: bold;
   text-align: left;
 }
 
@@ -111,12 +111,15 @@
 }
 
 .spanDiv span {
+  font-family: var(--font-cera);
+  font-weight: 400;
   color: var(--color-text);
 }
 
 .spanDiv h3 {
+  font-family: var(--font-cera);
+  font-weight: 800;
   font-size: 1rem;
-  font-weight: bold;
   user-select: none;
   color: var(--color-text);
 }
@@ -140,7 +143,7 @@
 .scrollButton {
   position: absolute;
   height: 400px;
-  width: 50px;
+  width: 40px;
   background-color: var(--color-bar-background);
   color: var(--color-text);
   border: none;
@@ -179,7 +182,8 @@
   align-items: center;
   background: var(--color-bar-background);
   border-top: 1px solid var(--color-border);
-  font-family: Arial, sans-serif;
+  font-family: var(--font-cera);
+  font-weight: 400;
   font-size: 14px;
   color: var(--color-text);
   padding: 1rem var(--standard-padding) 2rem var(--standard-padding);
@@ -202,4 +206,37 @@
 
 .footerLink:hover {
   text-decoration: underline;
+}
+
+/* AboutMe */
+
+.aboutMeContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hello {
+  font-family: var(--font-benzin);
+  font-size: clamp(25px, 0.79vw + 21.83px, 31.98px);
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--color-text);
+  height: 35px;
+  margin-bottom: 1rem;
+}
+
+.authorImage {
+  height: 40vh;
+  width: auto;
+}
+
+.authorDescription {
+  font-family: var(--font-cera);
+  width: 75vw;
+  color: var(--color-text);
+  margin-top: var(--standard-padding);
+  font-size: clamp(18px, 0.23vw + 17.35px, 20px);
+  text-align: center;
 }

@@ -44,15 +44,21 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
   const metadata = fetchMetadata(slug);
   return {
-    title: `${metadata.title} | Michał Zagajewski`,
+    title: `${metadata.title} | Name`,
   };
 }
 
-const SubPage = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = await params;
+interface SubPageProps {
+  params: {
+    slug: string;
+  };
+}
+
+const SubPage = async ({ params }: SubPageProps) => {
+  const { slug } = params;
   const directoryPath = path.join(process.cwd(), "public", "content");
   const subdirectoryPath = path.join(directoryPath, slug);
 
@@ -95,7 +101,6 @@ const SubPage = async ({ params }: { params: { slug: string } }) => {
           <div className={styles.title}>
             <AnimatedText text={metadata.title} />
           </div>
-          {/* <h1 className={styles.title}>{metadata.title}</h1> */}
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: descriptionHTML }}

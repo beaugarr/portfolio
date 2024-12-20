@@ -39,28 +39,28 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
     >
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 1 ? 2 : 1 }} // 40% width if active, 20% if not
+        style={{ flex: activeIndex === 1 ? 2 : 1, fontWeight: activeIndex === 1 ? 800: 400 }} // 40% width if active, 20% if not
         onClick={() => handleClick(1)}
       >
         <h3 className={styles.barText}>LIFE</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 0 ? 2 : 1 }} // 40% width if active, 20% if not
+        style={{ flex: activeIndex === 0 ? 2 : 1, fontWeight: activeIndex === 0 ? 800: 400 }} // 40% width if active, 20% if not
         onClick={() => handleClick(0)}
       >
         <h3 className={styles.barText}>WORK</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 2 ? 2 : 1 }} // 40% width if active, 20% if not
+        style={{ flex: activeIndex === 2 ? 2 : 1, fontWeight: activeIndex === 2 ? 800: 400 }} // 40% width if active, 20% if not
         onClick={() => handleClick(2)}
       >
         <h3 className={styles.barText}>ABOUT ME</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 3 ? 2 : 1 }} // 40% width if active, 20% if not
+        style={{ flex: activeIndex === 3 ? 2 : 1, fontWeight: activeIndex === 3 ? 800: 400 }} // 40% width if active, 20% if not
         onClick={() => handleClick(3)}
       >
         <h3 className={styles.barText}>SETTINGS</h3>

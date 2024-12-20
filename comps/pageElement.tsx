@@ -88,7 +88,21 @@ const PageElement: React.FC<PageElementProps> = ({
               scroll("left");
             }}
           >
-            &#8592;
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16 19l-7-7 7-7"
+                stroke="var(--color-text)"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         )}
         {images.map((image) => (
@@ -111,7 +125,21 @@ const PageElement: React.FC<PageElementProps> = ({
               scroll("right");
             }}
           >
-            &#8594;
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M8 5l7 7-7 7"
+                stroke="var(--color-text)"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         )}
       </div>

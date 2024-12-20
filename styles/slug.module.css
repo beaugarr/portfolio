@@ -3,7 +3,7 @@
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-background);
-  cursor: url("/cursor.svg");
+  cursor: url("/cursor.svg"), auto;
 }
 
 .content {
@@ -29,13 +29,15 @@
 .imageSectionImage {
   width: 100%;
   height: auto;
-  object-fit: cover; /* Ensures the images maintain aspect ratio */
+  object-fit: cover;
+  /* cursor: none; */
 }
 
 .title {
-  font-size: clamp(39.06px, 2.02vw + 25.99px, 56.83px);
-  line-height: 1;
+  font-size: clamp(35.06px, 2.02vw + 20.99px, 50.83px);
+  font-family: var(--font-benzin);
   font-weight: 400;
+  line-height: 1;
 }
 
 .textSection {
@@ -46,7 +48,8 @@
 }
 
 .description {
-  margin-top: 2rem;
+  font-family: var(--font-cera);
+  margin-top: 1.5rem;
 }
 
 .description h2 {
