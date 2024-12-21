@@ -1,10 +1,22 @@
-{
-    "title": "BANGLA",
-    "location": "Polska",
-    "date": "SEPTEMBER 2025",
-    "category": "WORK",
-    "type": "Project",
-    "url": "bangla",
-    "description": "This is a **detailed description** of the project.\n\nHere is a new paragraph with some *italic text*.\n\n\t- This is a bulleted list item.\n\t- Another item in the list.\n\nMore information can be found here."
+
+  {
+    "en": {
+      "title": "BANGLANGLIA",
+      "location": "Poland",
+      "date": "SEPTEMBER 2025",
+      "category": "WORK",
+      "type": "Project",
+      "url": "bangla",
+      "description": "This is a **detailed description** of the project.\n\nHere is a new paragraph with some *italic text*.\n\n\t- This is a bulleted list item.\n\t- Another item in the list.\n\nMore information can be found here."
+    },
+    "pl": {
+      "title": "BANGLAPOLSKA",
+      "location": "Polska",
+      "date": "WRZESIEŃ 2025",
+      "category": "PRACA",
+      "type": "Projekt",
+      "url": "bangla",
+      "description": "This is a **detailed description** of the project.\n\nHere is a new paragraph with some *italic text*.\n\n\t- This is a bulleted list item.\n\t- Another item in the list.\n\nMore information can be found here."
+    }
   }
   

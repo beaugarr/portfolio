@@ -1,9 +1,20 @@
 {
-  "title": "VIA CLAUDIA AUGUSTA × ALPA ADRIA",
-  "location": "FRANCE",
-  "date": "JAN 2025",
-  "category": "LIFE",
-  "type": "Travel",
-  "url": "alpy_rowerem",
-  "description": "System: Solum ist eine interaktive Forschungslandkarte, die sich mit dem geologischen Bodenkörper *Solum* beschäftigt. Das **SustainLab** der **Burg Giebichenstein Kunsthochschule Halle** (i.F. Burg Halle) hat sich mit diesem Thema auseinandergesetzt und die Ergebnisse in einer interaktiven Karte archiviert.\n\n## Thematische Schwerpunkte\nDabei haben sich zwei thematische Schwerpunkte herauskristallisiert:\n\n- **(un)certain flows**: Das sich mit Zukunftsszenarien des Materials Gips beschäftigt.\n- **prog/rammed earth**: Das mit neuen Technologien experimentiert, um einen zukunftsweisenden Umgang mit lokalen Sedimenten zu ermöglichen.\n\n## Zusammenarbeit\nIn Zusammenarbeit mit **Simon Maris** und **Ina Turinsky** wurde ich damit beauftragt, *System: Solum* technisch umzusetzen und bis zur Eröffnung der Ausstellung **BurgLabs present** im **Futurium** fertigzustellen.\n\n## Gestaltung\nDas Interface ist als Raster aus quadratischen Kacheln gestaltet, von denen jede ein zum Thema passendes Cover hat. Diese Darstellungsform visualisiert die Komplexität des Themas, ohne offene Lücken zu verbergen. Klickt man auf eine Kachel, wird das entsprechende Forschungsergebnis in einem daneben erscheinenden Fenster angezeigt."
+  "en": {
+    "title": "VIA CLAUDIA AUGUSTA × ALPA ADRIA",
+    "location": "FRANCE",
+    "date": "JAN 2025",
+    "category": "LIFE",
+    "type": "Travel",
+    "url": "alpy_rowerem",
+    "description": "System: Solum ist eine interaktive Forschungslandkarte, die sich mit dem geologischen Bodenkörper *Solum* beschäftigt. Das **SustainLab** der **Burg Giebichenstein Kunsthochschule Halle** (i.F. Burg Halle) hat sich mit diesem Thema auseinandergesetzt und die Ergebnisse in einer interaktiven Karte archiviert.\n\n## Thematische Schwerpunkte\nDabei haben sich zwei thematische Schwerpunkte herauskristallisiert:\n\n- **(un)certain flows**: Das sich mit Zukunftsszenarien des Materials Gips beschäftigt.\n- **prog/rammed earth**: Das mit neuen Technologien experimentiert, um einen zukunftsweisenden Umgang mit lokalen Sedimenten zu ermöglichen.\n\n## Zusammenarbeit\nIn Zusammenarbeit mit **Simon Maris** und **Ina Turinsky** wurde ich damit beauftragt, *System: Solum* technisch umzusetzen und bis zur Eröffnung der Ausstellung **BurgLabs present** im **Futurium** fertigzustellen.\n\n## Gestaltung\nDas Interface ist als Raster aus quadratischen Kacheln gestaltet, von denen jede ein zum Thema passendes Cover hat. Diese Darstellungsform visualisiert die Komplexität des Themas, ohne offene Lücken zu verbergen. Klickt man auf eine Kachel, wird das entsprechende Forschungsergebnis in einem daneben erscheinenden Fenster angezeigt."
+  },
+  "pl": {
+    "title": "VIA CLAUDIA AUGUSTA × ALPA ADRIA",
+    "location": "FRANCE",
+    "date": "JAN 2025",
+    "category": "LIFE",
+    "type": "Travel",
+    "url": "alpy_rowerem",
+    "description": "System: Solum ist eine interaktive Forschungslandkarte, die sich mit dem geologischen Bodenkörper *Solum* beschäftigt. Das **SustainLab** der **Burg Giebichenstein Kunsthochschule Halle** (i.F. Burg Halle) hat sich mit diesem Thema auseinandergesetzt und die Ergebnisse in einer interaktiven Karte archiviert.\n\n## Thematische Schwerpunkte\nDabei haben sich zwei thematische Schwerpunkte herauskristallisiert:\n\n- **(un)certain flows**: Das sich mit Zukunftsszenarien des Materials Gips beschäftigt.\n- **prog/rammed earth**: Das mit neuen Technologien experimentiert, um einen zukunftsweisenden Umgang mit lokalen Sedimenten zu ermöglichen.\n\n## Zusammenarbeit\nIn Zusammenarbeit mit **Simon Maris** und **Ina Turinsky** wurde ich damit beauftragt, *System: Solum* technisch umzusetzen und bis zur Eröffnung der Ausstellung **BurgLabs present** im **Futurium** fertigzustellen.\n\n## Gestaltung\nDas Interface ist als Raster aus quadratischen Kacheln gestaltet, von denen jede ein zum Thema passendes Cover hat. Diese Darstellungsform visualisiert die Komplexität des Themas, ohne offene Lücken zu verbergen. Klickt man auf eine Kachel, wird das entsprechende Forschungsergebnis in einem daneben erscheinenden Fenster angezeigt."
+  }
 }

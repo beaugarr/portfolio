@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import localFont from "next/font/local";
+import { ThemeProvider } from "@/comps/themeContext";
 
 const ceraPro = localFont({
   src: [
@@ -12,7 +13,6 @@ const ceraPro = localFont({
       path: "../public/fonts/CeraPro-Bold.ttf",
       weight: "800",
     },
-    
   ],
   variable: "--font-cera",
 });
@@ -34,16 +34,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        style={{ backgroundColor: "var(--color-background)" }}
-        className={`${ceraPro.variable} ${benzin.variable} antialiased`}
-      >
-        {children}
+      <body className={`${ceraPro.variable} ${benzin.variable} antialiased`}>
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

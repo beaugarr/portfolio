@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/js-cookie": "^3.0.6",
     "grapheme-splitter": "^1.0.4",
+    "js-cookie": "^3.0.5",
     "marked": "^15.0.4",
     "next": "15.1.0",
     "react": "^19.0.0",
