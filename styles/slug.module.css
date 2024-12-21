@@ -17,7 +17,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--standard-padding);
+  gap: .5rem;
 }
 
 .imageSection {
@@ -52,6 +52,7 @@
   font-family: var(--font-cera);
   margin-top: 1.5rem;
   color: var(--color-text);
+  line-height: 1.5;
 }
 
 .description h2 {

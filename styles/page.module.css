@@ -32,7 +32,7 @@
 
 .barSection {
   flex: 1;
-  padding: 15px;
+  padding: 12px;
   border: 1px solid var(--color-border);
   border-right: none;
   border-left: 0.25px solid var(--color-border);
@@ -64,7 +64,8 @@
 
 .barText {
   font-family: var(--font-cera);
-  font-size: 13px;
+  font-size: 12px;
+  line-height: 1;
   text-align: left;
 }
 
@@ -88,7 +89,7 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 0.5px solid var(--color-border);
-  height: 50px;
+  height: var(--standard-padding);
 }
 
 .details {
@@ -114,6 +115,7 @@
   font-family: var(--font-cera);
   font-weight: 400;
   color: var(--color-text);
+  font-size: .95rem;
 }
 
 .spanDiv h3 {
@@ -143,7 +145,7 @@
 .scrollButton {
   position: absolute;
   height: 400px;
-  width: 40px;
+  width: var(--standard-padding);
   background-color: var(--color-barBackground);
   color: var(--color-text);
   border: none;
@@ -154,6 +156,10 @@
   align-items: center;
   justify-content: center;
   transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.scrollButton:hover {
+  border: 1px solid var(--color-hoverBorder);
 }
 
 .scrollButton.left {

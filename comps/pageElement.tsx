@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/page.module.css";
+import { translations } from "@/utils/translations";
+import { useTheme } from "./themeContext";
 
 interface PageElementProps {
   title: string;
@@ -24,6 +26,8 @@ const PageElement: React.FC<PageElementProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
+  const { language } = useTheme();
+  const t = translations[language];
 
   const checkScrollButtons = () => {
     const container = scrollRef.current;
@@ -68,12 +72,12 @@ const PageElement: React.FC<PageElementProps> = ({
         <div className={styles.details}>
           <div className={styles.spanDiv}>
             <span>
-              LOCATION <strong>{location}</strong>
+              {t.location} <strong>{location}</strong>
             </span>
           </div>
           <div className={styles.spanDiv}>
             <span>
-              DATE <strong>{date}</strong>
+              {t.date} <strong>{date}</strong>
             </span>
           </div>
         </div>

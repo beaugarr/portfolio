@@ -3,6 +3,8 @@
 
 import React, { useState } from "react";
 import styles from "../styles/page.module.css";
+import { translations } from "@/utils/translations";
+import { useTheme } from "./themeContext";
 
 interface PageBarProps {
   onFilterChange: (filter: string | null) => void;
@@ -11,6 +13,8 @@ interface PageBarProps {
 
 const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { language } = useTheme();
+  const t = translations[language];
 
   const handleClick = (index: number) => {
     const newActiveIndex = activeIndex === index ? null : index; // Toggle selection
@@ -29,7 +33,7 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
           : null
         : null;
 
-    onFilterChange(filter); // Update filter
+    onFilterChange(filter);
   };
 
   return (
@@ -39,31 +43,43 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
     >
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 1 ? 2 : 1, fontWeight: activeIndex === 1 ? 800: 400 }} // 40% width if active, 20% if not
+        style={{
+          flex: activeIndex === 1 ? 2 : 1,
+          fontWeight: activeIndex === 1 ? 800 : 400,
+        }} // 40% width if active, 20% if not
         onClick={() => handleClick(1)}
       >
-        <h3 className={styles.barText}>LIFE</h3>
+        <h3 className={styles.barText}>{t.life}</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 0 ? 2 : 1, fontWeight: activeIndex === 0 ? 800: 400 }} // 40% width if active, 20% if not
+        style={{
+          flex: activeIndex === 0 ? 2 : 1,
+          fontWeight: activeIndex === 0 ? 800 : 400,
+        }} // 40% width if active, 20% if not
         onClick={() => handleClick(0)}
       >
-        <h3 className={styles.barText}>WORK</h3>
+        <h3 className={styles.barText}>{t.work}</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 2 ? 2 : 1, fontWeight: activeIndex === 2 ? 800: 400 }} // 40% width if active, 20% if not
+        style={{
+          flex: activeIndex === 2 ? 2 : 1,
+          fontWeight: activeIndex === 2 ? 800 : 400,
+        }} // 40% width if active, 20% if not
         onClick={() => handleClick(2)}
       >
-        <h3 className={styles.barText}>ABOUT ME</h3>
+        <h3 className={styles.barText}>{t.aboutMe}</h3>
       </div>
       <div
         className={styles.barSection}
-        style={{ flex: activeIndex === 3 ? 2 : 1, fontWeight: activeIndex === 3 ? 800: 400 }} // 40% width if active, 20% if not
+        style={{
+          flex: activeIndex === 3 ? 2 : 1,
+          fontWeight: activeIndex === 3 ? 800 : 400,
+        }} // 40% width if active, 20% if not
         onClick={() => handleClick(3)}
       >
-        <h3 className={styles.barText}>SETTINGS</h3>
+        <h3 className={styles.barText}>{t.settings}</h3>
       </div>
     </div>
   );
