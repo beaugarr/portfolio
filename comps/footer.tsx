@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerLeft}>
-        <p>© 2024, Name</p>
+        <p>© 2024, Michał Zagajewski</p>
         <p>Version: 1.1.1</p>
       </div>
       <div className={styles.footerRight}>

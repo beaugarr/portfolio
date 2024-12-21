@@ -47,7 +47,7 @@ export async function generateMetadata({
   const { slug } = params;
   const metadata = fetchMetadata(slug);
   return {
-    title: `${metadata.title} | Name`,
+    title: `${metadata.title} | Michał Zagajewski`,
   };
 }
 
