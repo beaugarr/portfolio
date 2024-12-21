@@ -42,9 +42,9 @@ const fetchMetadata = (slug: string): Metadata => {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await params;
   const metadata = fetchMetadata(slug);
   return {
     title: `${metadata.title} | Michał Zagajewski`,
@@ -52,13 +52,13 @@ export async function generateMetadata({
 }
 
 interface SubPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const SubPage = async ({ params }: SubPageProps) => {
-  const { slug } = params;
+  const { slug } = await params;
   const directoryPath = path.join(process.cwd(), "public", "content");
   const subdirectoryPath = path.join(directoryPath, slug);
 
