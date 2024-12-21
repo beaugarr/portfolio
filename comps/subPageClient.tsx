@@ -23,10 +23,6 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
     const fetchData = async () => {
       try {
         const lang = Cookies.get("language") || "pl";
-        console.log("LANG: ", Cookies.get("language"));
-        console.log(
-          `Fetching data from: ${process.env.NEXT_PUBLIC_API_URL}/api/getSubdirectory?slug=${slug}&lang=${lang}`
-        );
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/getSubdirectory?slug=${slug}&lang=${lang}`
         );

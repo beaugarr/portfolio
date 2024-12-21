@@ -116,6 +116,7 @@
   font-weight: 400;
   color: var(--color-text);
   font-size: .95rem;
+  text-transform: uppercase;
 }
 
 .spanDiv h3 {

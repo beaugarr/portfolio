@@ -32,7 +32,6 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
           ? "SETTINGS"
           : null
         : null;
-
     onFilterChange(filter);
   };
 
