@@ -5,8 +5,7 @@ import { marked } from "marked";
 import styles from "@/styles/slug.module.css";
 import Image from "next/image";
 import Footer from "@/comps/footer";
-import AnimatedText from "@/comps/animatedText";
-import Cookies from "js-cookie";
+import { TypeAnimation } from "react-type-animation";
 import { LanguageMetadata } from "@/utils/types";
 import { useTheme } from "./themeContext";
 import { translations } from "@/utils/translations";
@@ -26,9 +25,8 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const lang = Cookies.get("language") || "pl";
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/getSubdirectory?slug=${slug}&lang=${lang}`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/getSubdirectory?slug=${slug}&lang=${language}`
         );
 
         if (!response.ok) {
@@ -39,6 +37,10 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
 
         setMetadata(data.metadata || null);
         setImages(data.images || []);
+
+        if (data.metadata && data.metadata.title) {
+          document.title = `${data.metadata.title} | Michał Zagajewski`;
+        }
       } catch (error) {
         console.error("Error fetching subdirectory data:", error);
         setMetadata(null);
@@ -47,7 +49,7 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
     };
 
     fetchData();
-  }, [slug]);
+  }, [slug, language]);
 
   if (!metadata) {
     return <div />;
@@ -136,7 +138,13 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
         </div>
         <div className={styles.textSection}>
           <div className={styles.title}>
-            <AnimatedText text={metadata.title} />
+            <TypeAnimation
+              key={metadata.title}
+              sequence={[metadata.title, 1000]}
+              speed={75}
+              repeat={1}
+              cursor={false}
+            />
           </div>
           <div
             className={styles.description}

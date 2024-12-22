@@ -27,21 +27,32 @@ const defaultColors = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<string>(Cookies.get("language") || "en");
-  const [colors, setColors] = useState(() => {
-    try {
-      const savedColors = Cookies.get("colors");
-      return savedColors ? JSON.parse(savedColors) : defaultColors;
-    } catch {
-      return defaultColors;
-    }
-  });
+  const [language, setLanguage] = useState<string>("pl");  // Default value for SSR
+  const [colors, setColors] = useState(defaultColors);  // Default value for SSR
+  const [isHydrated, setIsHydrated] = useState(false); // Track hydration status
 
   useEffect(() => {
+    // Set language and colors from cookies only on the client
+    const savedLanguage = Cookies.get("language");
+    const savedColors = Cookies.get("colors");
+    
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+    if (savedColors) {
+      setColors(JSON.parse(savedColors));
+    }
+
+    setIsHydrated(true);  // Mark hydration as complete
+  }, []);
+
+  useEffect(() => {
+    // Set language cookie on change
     Cookies.set("language", language);
   }, [language]);
 
   useEffect(() => {
+    // Set colors cookies and update CSS variables on change
     if (colors) {
       Object.entries(colors).forEach(([key, value]) => {
         document.documentElement.style.setProperty(`--color-${key}`, value as string);
@@ -49,6 +60,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       Cookies.set("colors", JSON.stringify(colors));
     }
   }, [colors]);
+
 
   return (
     <ThemeContext.Provider value={{ language, setLanguage, colors, setColors }}>
