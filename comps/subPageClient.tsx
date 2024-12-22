@@ -8,17 +8,21 @@ import Footer from "@/comps/footer";
 import AnimatedText from "@/comps/animatedText";
 import Cookies from "js-cookie";
 import { LanguageMetadata } from "@/utils/types";
+import { useTheme } from "./themeContext";
+import { translations } from "@/utils/translations";
+import { useRouter } from "next/navigation";
 
 interface SubPageClientProps {
   slug: string;
 }
 
 const SubPageClient = ({ slug }: SubPageClientProps) => {
-  // State management
+  const router = useRouter();
   const [metadata, setMetadata] = useState<LanguageMetadata | null>(null);
   const [images, setImages] = useState<{ id: number; src: string }[]>([]);
+  const { language, setLanguage } = useTheme();
+  const t = translations[language];
 
-  // Fetch data on mount
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,18 +47,78 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
     };
 
     fetchData();
-  }, [slug]); // Dependency is `slug`
+  }, [slug]);
 
-  // Render error state
   if (!metadata) {
-    return <div></div>;
+    return <div />;
   }
 
-  // Render parsed description HTML
   const descriptionHTML = marked(metadata.description || "");
+
+  function handleGoBack() {
+    if (window.history.length > 1) {
+      router.back();
+    } else {
+      router.push("/");
+    }
+  }
+
+  function handleLanguageChange(lang: string) {
+    setLanguage(lang);
+  }
 
   return (
     <div className={styles.container}>
+      <div className={styles.headerContainer}>
+        <button className={styles.backButton} onClick={handleGoBack}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16 19l-7-7 7-7"
+              stroke="var(--color-text)"
+              strokeWidth="2"
+              fill="none"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+        <div className={styles.header}>
+          <div className={styles.spanDiv}>
+            <h3>{metadata.title}</h3>
+          </div>
+          <div className={styles.details}>
+            <div className={styles.spanDiv}>
+              <span>
+                {t.location} <strong>{metadata.location}</strong>
+              </span>
+            </div>
+            <div className={styles.spanDiv}>
+              <span>
+                {t.date} <strong>{metadata.date}</strong>
+              </span>
+            </div>
+            <div className={styles.languageButtons}>
+              <button
+                className={language === "pl" ? styles.activeButton : ""}
+                onClick={() => handleLanguageChange("pl")}
+              >
+                PL
+              </button>
+              <button
+                className={language === "en" ? styles.activeButton : ""}
+                onClick={() => handleLanguageChange("en")}
+              >
+                EN
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className={styles.content}>
         <div className={styles.gallery}>
           {images.map((image) => (

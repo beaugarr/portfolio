@@ -115,7 +115,7 @@
   font-family: var(--font-cera);
   font-weight: 400;
   color: var(--color-text);
-  font-size: .95rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
 }
 
@@ -141,6 +141,12 @@
   overflow-x: auto;
   scroll-behavior: smooth;
   height: 400px; /* zmien w scroollButton na takie samo */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer */
+}
+
+.imageGallery::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in WebKit browsers (Chrome, Safari) */
 }
 
 .scrollButton {
@@ -193,7 +199,7 @@
   font-weight: 400;
   font-size: 14px;
   color: var(--color-text);
-  padding: 1rem var(--standard-padding) 2rem var(--standard-padding);
+  padding: 1rem var(--standard-padding) 1.5rem var(--standard-padding);
 }
 
 .footerLeft p {
