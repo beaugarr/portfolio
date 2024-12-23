@@ -201,7 +201,9 @@
   padding: 1rem var(--standard-padding) 1.5rem var(--standard-padding);
 }
 
-.footerLeft, .footerCenter, .footerRight {
+.footerLeft,
+.footerCenter,
+.footerRight {
   flex: 1;
   display: flex;
   align-items: center;
@@ -214,7 +216,7 @@
 }
 
 .footerCenter {
-  justify-content: center; 
+  justify-content: center;
   gap: 16px;
 }
 
@@ -237,16 +239,16 @@
   text-decoration: underline;
 }
 
-.socialIcon img {
-  width: 24px; /* Set a fixed width for the icons */
-  height: 24px; /* Set a fixed height for the icons */
-  fill: var(--color-icon); /* Set default icon color */
-  transition: transform 0.2s, fill 0.2s; /* Transition effects */
+.socialIcon {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-text);
+  transition: transform 0.2s, fill 0.2s;
 }
 
-.socialIcon:hover img {
-  transform: scale(1.2); /* Scale effect on hover */
-  fill: var(--color-icon-hover); /* Change color on hover */
+.socialIcon:hover {
+  transform: scale(1.2);
+  fill: var(--color-text);
 }
 
 /* AboutMe */

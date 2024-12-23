@@ -3,17 +3,34 @@ import { translations } from "@/utils/translations";
 import { useTheme } from "./themeContext";
 import Link from "next/link";
 import Image from "next/image";
+import { icons } from "@/utils/icons";
 
 const Footer = () => {
   const { language } = useTheme();
   const t = translations[language];
 
   const socialLinks = [
-    { href: "https://www.linkedin.com/in/michał-zagajewski-a02855272/", label: "LinkedIn", icon: "/icons/linkedin.svg" },
-    { href: "https://www.instagram.com/michal_zagajewski/", label: "Instagram", icon: "/icons/instagram.svg" },
-    { href: "https://github.com/beaugarr/", label: "GitHub", icon: "/icons/github.svg" },
-    { href: "https://www.facebook.com/michal.zagajewski.90/", label: "Facebook", icon: "/icons/facebook.svg" },
-    { href: "https://x.com/mizagajewski", label: "X (Twitter)", icon: "/icons/x.svg" },
+    {
+      href: "https://www.linkedin.com/in/michał-zagajewski-a02855272/",
+      label: "LinkedIn",
+      icon: icons.LinkedIn,
+    },
+    {
+      href: "https://www.instagram.com/michal_zagajewski/",
+      label: "Instagram",
+      icon: icons.Instagram,
+    },
+    {
+      href: "https://github.com/beaugarr/",
+      label: "GitHub",
+      icon: icons.GitHub,
+    },
+    {
+      href: "https://www.facebook.com/michal.zagajewski.90/",
+      label: "Facebook",
+      icon: icons.Facebook,
+    },
+    { href: "https://x.com/mizagajewski", label: "X (Twitter)", icon: icons.X },
   ];
 
   return (
@@ -24,7 +41,7 @@ const Footer = () => {
       </div>
       <div className={styles.footerCenter}>
         {socialLinks.map((link, index) => (
-          <a
+          <Link
             key={index}
             href={link.href}
             target="_blank"
@@ -32,8 +49,8 @@ const Footer = () => {
             aria-label={link.label}
             className={styles.socialIcon}
           >
-            <img src={link.icon} alt={link.label} />
-          </a>
+            {link.icon}
+          </Link>
         ))}
       </div>
       <div className={styles.footerRight}>
