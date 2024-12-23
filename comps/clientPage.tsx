@@ -14,6 +14,27 @@ const ClientPage: React.FC = () => {
   const { language } = useTheme();
   const [subdirectories, setSubdirectories] = useState<Subdirectory[]>([]);
   const [filter, setFilter] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    // Set up the observer to monitor the sentinel above PageBar
+    const sentinel = document.querySelector("#sentinel");
+    if (!sentinel) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Expand PageBar when the sentinel is out of view (above the viewport)
+        setIsExpanded(!entry.isIntersecting);
+      },
+      { root: null, threshold: 0 } // Trigger as soon as the sentinel intersects
+    );
+
+    observer.observe(sentinel);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     const fetchSubdirectories = async () => {
@@ -36,35 +57,11 @@ const ClientPage: React.FC = () => {
           (subdir) => subdir.metadata[language]?.category === filter
         );
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  useEffect(() => {
-    const pageBar = document.querySelector("#pageBar");
-
-    if (!pageBar) return;
-
-    const sentinel = document.createElement("div");
-    sentinel.style.height = "1px";
-    sentinel.style.width = "100%";
-    sentinel.style.position = "absolute";
-    pageBar.parentElement?.insertBefore(sentinel, pageBar);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => setIsExpanded(!entry.isIntersecting),
-      { threshold: 0 }
-    );
-
-    observer.observe(sentinel);
-
-    return () => {
-      observer.disconnect();
-      sentinel.remove();
-    };
-  }, []);
-
   return (
     <div className={styles.container}>
       <Hero />
+      {/* Sentinel above PageBar */}
+      <div id="sentinel" style={{ height: "1px" }}></div>
       <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
       <div className={styles.mainContent}>
         {filter === "SETTINGS" && <Settings />}
