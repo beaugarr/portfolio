@@ -17,16 +17,21 @@ const ClientPage: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    // Set up the observer to monitor the sentinel above PageBar
+    // Sentinel setup for observing PageBar behavior
     const sentinel = document.querySelector("#sentinel");
     if (!sentinel) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Expand PageBar when the sentinel is out of view (above the viewport)
-        setIsExpanded(!entry.isIntersecting);
+        // Expand PageBar if sentinel is out of view above the viewport
+        // Shrink PageBar if sentinel is in view
+        setIsExpanded(entry.boundingClientRect.top < 0 && !entry.isIntersecting);
       },
-      { root: null, threshold: 0 } // Trigger as soon as the sentinel intersects
+      {
+        root: null,
+        threshold: 0, // Trigger when crossing the viewport boundary
+        rootMargin: "0px", // Observe exactly at the viewport's edge
+      }
     );
 
     observer.observe(sentinel);
@@ -60,7 +65,7 @@ const ClientPage: React.FC = () => {
   return (
     <div className={styles.container}>
       <Hero />
-      {/* Sentinel above PageBar */}
+      {/* Sentinel element above PageBar */}
       <div id="sentinel" style={{ height: "1px" }}></div>
       <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
       <div className={styles.mainContent}>
