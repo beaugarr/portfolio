@@ -27,8 +27,6 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
           : newActiveIndex === 1
           ? "LIFE"
           : newActiveIndex === 2
-          ? "ABOUT ME"
-          : newActiveIndex === 3
           ? "SETTINGS"
           : null
         : null;
@@ -67,16 +65,6 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
           fontWeight: activeIndex === 2 ? 800 : 400,
         }} // 40% width if active, 20% if not
         onClick={() => handleClick(2)}
-      >
-        <h3 className={styles.barText}>{t.aboutMe}</h3>
-      </div>
-      <div
-        className={styles.barSection}
-        style={{
-          flex: activeIndex === 3 ? 2 : 1,
-          fontWeight: activeIndex === 3 ? 800 : 400,
-        }} // 40% width if active, 20% if not
-        onClick={() => handleClick(3)}
       >
         <h3 className={styles.barText}>{t.settings}</h3>
       </div>

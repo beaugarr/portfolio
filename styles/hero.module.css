@@ -1,0 +1,84 @@
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  padding: var(--standard-padding);
+  background-color: var(--color-background);
+  font-family: var(--font-benzin);
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  z-index: 30;
+}
+
+.surnameWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.name {
+  font-family: var(--font-benzin);
+  color: var(--yellow);
+  letter-spacing: -0.02em;
+  font-size: 7.5rem;
+  font-weight: 600;
+  line-height: 0.8;
+  white-space: nowrap;
+}
+
+.bracketWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.bracketText {
+  font-size: .7vw;
+  font-weight: 400;
+  letter-spacing: 0em;
+  color: var(--yellow);
+  padding-bottom: 1.7rem;
+}
+
+.authorDiv {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.authorImageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.authorTextWrapper {
+  flex: 1.2;
+  position: relative;
+  background-color: var(--color-barBackground);
+  height: calc(80vh - 2.25em);
+}
+
+.authorImage {
+  z-index: 28;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll;
+  width: auto;
+  height: 80vh;
+  position: absolute;
+  bottom: -2.25em;
+  /* left: 11.75em; */
+}

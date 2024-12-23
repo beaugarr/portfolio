@@ -4,11 +4,11 @@ import React, { useState, useEffect } from "react";
 import { useTheme } from "@/comps/themeContext";
 import PageBar from "@/comps/pageBar";
 import PageElement from "@/comps/pageElement";
-import AboutMe from "./aboutMe";
 import Settings from "./settings";
 import Footer from "./footer";
 import styles from "@/styles/page.module.css";
 import { Subdirectory } from "@/utils/types";
+import Hero from "./hero";
 
 const ClientPage: React.FC = () => {
   const { language } = useTheme();
@@ -18,7 +18,7 @@ const ClientPage: React.FC = () => {
   useEffect(() => {
     const fetchSubdirectories = async () => {
       try {
-        const response = await fetch('/api/getSubdirectories');
+        const response = await fetch("/api/getSubdirectories");
         const data = await response.json();
         setSubdirectories(data.subdirectories);
       } catch (error) {
@@ -32,7 +32,9 @@ const ClientPage: React.FC = () => {
   const filteredSubdirectories =
     filter === null
       ? subdirectories
-      : subdirectories.filter((subdir) => subdir.metadata[language]?.category === filter);
+      : subdirectories.filter(
+          (subdir) => subdir.metadata[language]?.category === filter
+        );
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -60,15 +62,13 @@ const ClientPage: React.FC = () => {
     };
   }, []);
 
-
   return (
     <div className={styles.container}>
+      <Hero />
       <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
       <div className={styles.mainContent}>
-        {filter === "ABOUT ME" && <AboutMe />}
         {filter === "SETTINGS" && <Settings />}
-        {filter !== "ABOUT ME" &&
-          filter !== "SETTINGS" &&
+        {filter !== "SETTINGS" &&
           filteredSubdirectories.map((subdir, index) => {
             const metadata = subdir.metadata[language] || subdir.metadata["en"]; // Fallback to English
 

@@ -4,7 +4,6 @@
   min-height: 100vh;
   background-color: var(--color-background);
   user-select: none;
-  padding-top: var(--standard-padding);
   cursor: url("/cursor.svg"), auto;
 }
 
@@ -107,7 +106,7 @@
   height: 100%; /* Stretches span to full height of .details */
   border-right: 0.5px solid var(--color-border); /* Vertical border */
   padding-right: var(--standard-padding); /* Space to the right */
-  padding-left: 5px; /* Space to the left */
+  padding-left: 10px; /* Space to the left */
   position: relative; /* Needed for absolute positioning of inner text */
 }
 
