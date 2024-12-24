@@ -9,6 +9,11 @@
   color: var(--color-text);
 }
 
+.heroSection * {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+}
+
 .textContainer {
   display: flex;
   flex-direction: column;
