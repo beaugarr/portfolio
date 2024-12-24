@@ -251,35 +251,39 @@
   fill: var(--color-text);
 }
 
-/* AboutMe */
-
-.aboutMeContainer {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-}
-
-.hello {
-  font-family: var(--font-benzin);
-  font-size: clamp(25px, 0.79vw + 21.83px, 31.98px);
-  font-weight: 400;
-  text-decoration: none;
-  color: var(--color-text);
-  height: 35px;
-  margin-bottom: 1rem;
-}
-
-.authorImage {
-  height: 40vh;
-  width: auto;
-}
-
-.authorDescription {
+/* SETITNGS */
+.languageLabel {
   font-family: var(--font-cera);
-  width: 75vw;
+  font-size: 1.5rem;
+  line-height: 1;
+  text-align: left;
   color: var(--color-text);
-  margin-top: var(--standard-padding);
-  font-size: clamp(18px, 0.23vw + 17.35px, 20px);
-  text-align: center;
+}
+
+.colorLabel {
+  font-family: var(--font-cera);
+  font-size: 1.2rem;
+  line-height: 1;
+  text-align: left;
+  color: var(--color-text);
+}
+
+.selectNone * {
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  cursor: url("/cursor.svg"), auto;
+}
+
+.resetButton {
+  font-family: var(--font-cera);
+  font-size: 1rem;
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.resetButton:hover {
+  transform: scale(1.1);
 }

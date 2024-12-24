@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "@/styles/globals.css";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/comps/themeContext";
+import './globals.css'
 
 const ceraPro = localFont({
   src: [
@@ -14,6 +14,7 @@ const ceraPro = localFont({
       weight: "800",
     },
   ],
+  preload: true,
   variable: "--font-cera",
 });
 
@@ -24,6 +25,7 @@ const benzin = localFont({
       weight: "400",
     },
   ],
+  preload: true,
   variable: "--font-benzin",
 });
 
@@ -38,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="pl">
       <body className={`${ceraPro.variable} ${benzin.variable} antialiased`}>
         <ThemeProvider>
           {children}

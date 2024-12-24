@@ -1,135 +1,103 @@
-import React, { useState } from "react";
+"use client";
+
+import React from "react";
 import { useTheme } from "./themeContext";
-import { Colors } from "@/utils/types"; // Import Colors interface
+import { Colors } from "@/utils/types";
+import styles from "@/styles/page.module.css";
+import { translations } from "@/utils/translations";
 
-const Settings: React.FC = () => {
+const defaultColors: Colors = {
+  background: "#ffffff",
+  barBackground: "#f5f5f5",
+  text: "#171717",
+  border: "#000000",
+  hoverBorder: "#7EFC00",
+};
+
+export default function Settings() {
   const { language, setLanguage, colors, setColors } = useTheme();
-  const defaultColors: Colors = {
-    background: "#ffffff",
-    barBackground: "#f5f5f5",
-    text: "#171717",
-    border: "#000000",
-    hoverBorder: "#7EFC00",
-  };
+  const t = translations[language];
 
-  // Handle language change
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setLanguage(event.target.value);
-  };
-
-  // Handle instant color change
-  const handleColorChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+  const handleColorChange = (name: keyof Colors, value: string) => {
     setColors({
       ...colors,
       [name]: value,
     });
   };
 
-  // Reset colors to default
   const resetColors = () => {
     setColors(defaultColors);
   };
 
   return (
-    <div style={{ color: "#000", padding: "20px" }}>
-      <h1>Settings</h1>
-
-      {/* Language Selector */}
-      <div style={{ marginBottom: "20px" }}>
-        <label htmlFor="language" style={{ display: "block", marginBottom: "10px" }}>
-          Select Language:
-        </label>
-        <select id="language" value={language} onChange={handleLanguageChange}>
-          <option value="en">English</option>
-          <option value="pl">Polish</option>
-        </select>
-      </div>
-
-      {/* Color Customization */}
-      <div>
-        <h2>Customize Colors</h2>
-        <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="background" style={{ display: "block", marginBottom: "5px" }}>
-            Background Color:
-          </label>
-          <input
-            type="color"
-            id="background"
-            name="background"
-            value={colors.background}
-            onChange={handleColorChange}
-          />
+    <div className={styles.selectNone}>
+      <div className="space-y-8">
+        <div className="space-y-4">
+          <label className={styles.languageLabel}>{t.language}</label>
+          <select
+            id="language"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            style={{
+              backgroundColor: "var(--color-barBackground)",
+              color: "var(--color-text)",
+              borderColor: "var(--color-border)",
+            }}
+            className="w-full p-2 border border-gray-300 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="en">English</option>
+            <option value="pl">Polski</option>
+          </select>
         </div>
 
-        <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="barBackground" style={{ display: "block", marginBottom: "5px" }}>
-            Bar Background Color:
-          </label>
-          <input
-            type="color"
-            id="barBackground"
-            name="barBackground"
-            value={colors.barBackground}
-            onChange={handleColorChange}
-          />
+        <div className="space-y-4 ">
+          <div className="flex items-center space-x-4">
+            <h2 className={styles.languageLabel}>{t.colorSettings}</h2>
+            <button onClick={resetColors} className={styles.resetButton}>
+              {t.resetColors}
+            </button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {(Object.keys(colors) as Array<keyof Colors>).map((colorKey) => (
+              <div key={colorKey} className="space-y-2">
+                <label className={styles.colorLabel}>
+                  {t[colorKey]}
+                </label>
+                <div className="flex items-center space-x-4">
+                  <input
+                    id={`color-${colorKey}`}
+                    type="color"
+                    value={colors[colorKey]}
+                    onChange={(e) =>
+                      handleColorChange(colorKey, e.target.value)
+                    }
+                    className="w-16 h-16 p-1 rounded border border-gray-300"
+                    style={{
+                      backgroundColor: "#fff",
+                      color: "var(--color-text)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  />
+                  <input
+                    type="text"
+                    value={colors[colorKey]}
+                    onChange={(e) =>
+                      handleColorChange(colorKey, e.target.value)
+                    }
+                    className="flex-grow p-2 border border-gray-300 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder={`Enter ${colorKey} color hex`}
+                    style={{
+                      backgroundColor: "var(--color-barBackground)",
+                      color: "var(--color-text)",
+                      borderColor: "var(--color-border)",
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="text" style={{ display: "block", marginBottom: "5px" }}>
-            Text Color:
-          </label>
-          <input
-            type="color"
-            id="text"
-            name="text"
-            value={colors.text}
-            onChange={handleColorChange}
-          />
-        </div>
-
-        <div style={{ marginBottom: "10px" }}>
-          <label htmlFor="border" style={{ display: "block", marginBottom: "5px" }}>
-            Border Color:
-          </label>
-          <input
-            type="color"
-            id="border"
-            name="border"
-            value={colors.border}
-            onChange={handleColorChange}
-          />
-        </div>
-
-        <div style={{ marginBottom: "20px" }}>
-          <label htmlFor="hoverBorder" style={{ display: "block", marginBottom: "5px" }}>
-            Hover Border Color:
-          </label>
-          <input
-            type="color"
-            id="hoverBorder"
-            name="hoverBorder"
-            value={colors.hoverBorder}
-            onChange={handleColorChange}
-          />
-        </div>
-
-        {/* Reset Colors Button */}
-        <button
-          onClick={resetColors}
-          style={{
-            padding: "10px 20px",
-            cursor: "pointer",
-            marginRight: "10px",
-            background: "#f5f5f5",
-            border: "1px solid #000",
-          }}
-        >
-          Clear Colors
-        </button>
       </div>
     </div>
   );
-};
-
-export default Settings;
+}
