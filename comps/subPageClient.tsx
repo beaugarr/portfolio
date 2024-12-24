@@ -58,12 +58,12 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
   const descriptionHTML = marked(metadata.description || "");
 
   function handleGoBack() {
-    if (window.history.length > 1) {
+    if (document.referrer && document.referrer.startsWith(window.location.origin)) {
       router.back();
     } else {
       router.push("/");
     }
-  }
+  }  
 
   function handleLanguageChange(lang: string) {
     setLanguage(lang);
