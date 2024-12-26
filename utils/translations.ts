@@ -23,6 +23,10 @@ export const translations: Translations = {
     border: "Border Color",
     hoverBorder: "Hover Border Color",
     colorSettings: "Color Settings",
+    firstLine: "STUDENT OF CS & AI/ML",
+    secondLine: "SOFTWARE DEVELOPER",
+    thirdLine: "STOCK INVESTOR FOR 2 YEARS",
+    fourthLine: "START-UPS FOUNDER",
   },
   pl: {
     work: "PROJEKTY",
@@ -42,6 +46,10 @@ export const translations: Translations = {
     border: "Kolor Obramowania",
     hoverBorder: "Kolor Obramowania po Najechaniu",
     colorSettings: "Ustawienia Kolorów",
+    firstLine: "STUDENT INFORMATYKI I SZTUCZNEJ INTELIGENCJI",
+    secondLine: "DEWELOPER OPROGRAMOWANIA",
+    thirdLine: "INWESTOR GIEŁDOWY OD 2 LAT",
+    fourthLine: "ZAŁOŻYCIEL START-UPÓW",
   },
 };
 

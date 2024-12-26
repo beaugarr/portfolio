@@ -4,9 +4,11 @@ import styles from "@/styles/hero.module.css";
 import Link from "next/link";
 import { useTheme } from "./themeContext";
 import { heroTexts } from "@/utils/translations";
+import { translations } from "@/utils/translations";
 
 const Hero: React.FC = () => {
   const { language } = useTheme();
+  const t = translations[language];
   const texts = heroTexts[language];
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [wrapperBounds, setWrapperBounds] = useState({ width: 0, height: 0 });
@@ -88,10 +90,10 @@ const Hero: React.FC = () => {
           <div className={styles.bracketWrapper}>
             <span className={styles.name}>[</span>
             <div className={styles.bracketText}>
-              CERTIFIED META ADS SPECIALIST
-              <br />
-              TARGETED ADVERTISING <br />
-              ON FACEBOOK & INSTAGRAM, LINKEDIN
+              {t.firstLine}<br />
+              {t.secondLine}<br />
+              {t.thirdLine}<br />
+              {t.fourthLine}
             </div>
             <span className={styles.name}>]</span>
           </div>
