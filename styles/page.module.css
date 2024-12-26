@@ -55,6 +55,7 @@
 
 .barSection:hover {
   border: 1px solid var(--color-hoverBorder);
+  color: var(--color-hoverBorder);
 }
 
 .barSection:hover + .barSection {
@@ -102,11 +103,11 @@
 
 .spanDiv {
   display: flex; /* Keeps flex display for bottom alignment */
-  align-items: flex-end; /* Aligns text to the bottom */
+  align-items: center; /* Aligns text to the bottom */
   height: 100%; /* Stretches span to full height of .details */
   border-right: 0.5px solid var(--color-border); /* Vertical border */
-  padding-right: var(--standard-padding); /* Space to the right */
-  padding-left: 10px; /* Space to the left */
+  padding-right: 1rem; /* Space to the right */
+  padding-left: 1rem; /* Space to the left */
   position: relative; /* Needed for absolute positioning of inner text */
 }
 
