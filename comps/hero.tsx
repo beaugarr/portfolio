@@ -92,8 +92,8 @@ const Hero: React.FC = () => {
             <div className={styles.bracketText}>
               {t.firstLine}<br />
               {t.secondLine}<br />
-              {t.thirdLine}<br />
-              {t.fourthLine}
+              {/* {t.thirdLine}<br /> */}
+              {/* {t.fourthLine} */}
             </div>
             <span className={styles.name}>]</span>
           </div>

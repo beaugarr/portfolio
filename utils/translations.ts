@@ -62,23 +62,17 @@ type HeroTexts = {
 
 export const heroTexts: HeroTexts = {
   en: [
-    { text: "Innovator", link: null },
-    { text: "Marketer", link: null },
-    { text: "Driven by Data", link: null },
     { text: "Let's Collaborate", link: "https://linkedin.com" },
-    { text: "Coffee Enthusiast", link: null },
-    { text: "Meta Certified", link: null },
-    { text: "Strategy First", link: null },
-    { text: "Portfolio", link: "https://yourportfolio.com" },
+    { text: "ComputerScience", link: "" },
+    { text: "AI/ML", link: "" },
+    { text: "Trading", link: "" },
+    { text: "Cycling", link: "" },
   ],
   pl: [
-    { text: "Innowator", link: null },
-    { text: "Marketingowiec", link: null },
-    { text: "Napędzany Danymi", link: null },
     { text: "Współpracujmy", link: "https://linkedin.com" },
-    { text: "Miłośnik Kawy", link: null },
-    { text: "Certyfikowany przez Meta", link: null },
-    { text: "Strategia na Pierwszym Miejscu", link: null },
-    { text: "Portfolio", link: "https://yourportfolio.com" },
+    { text: "Informatyka", link: "" },
+    { text: "AI/ML", link: "" },
+    { text: "Trading", link: "" },
+    { text: "Kolarstwo", link: "" },
   ],
 };
