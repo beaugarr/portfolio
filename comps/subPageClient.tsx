@@ -10,6 +10,7 @@ import { LanguageMetadata } from "@/utils/types";
 import { useTheme } from "./themeContext";
 import { translations } from "@/utils/translations";
 import { useRouter } from "next/navigation";
+import useMobile from "@/utils/useMobile";
 
 interface SubPageClientProps {
   slug: string;
@@ -20,6 +21,7 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
   const [metadata, setMetadata] = useState<LanguageMetadata | null>(null);
   const [images, setImages] = useState<{ id: number; src: string }[]>([]);
   const { language, setLanguage } = useTheme();
+  const { isPhone, isTablet } = useMobile();
   const t = translations[language];
 
   useEffect(() => {
@@ -96,12 +98,12 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
           <div className={styles.details}>
             <div className={styles.spanDiv}>
               <span>
-                {t.location} <strong>{metadata.location}</strong>
+                {!isPhone && !isTablet && t.location} <strong>{metadata.location}</strong>
               </span>
             </div>
             <div className={styles.spanDiv}>
               <span>
-                {t.date} <strong>{metadata.date}</strong>
+              {!isPhone && !isTablet && t.date} <strong>{metadata.date}</strong>
               </span>
             </div>
             <div className={styles.languageButtons}>

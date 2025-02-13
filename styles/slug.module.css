@@ -6,18 +6,32 @@
   cursor: url("/cursor.svg"), auto;
 }
 
+/* Content Section - Mobile Adjustments */
 .content {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* Stack content vertically on mobile */
   justify-content: center;
   padding: var(--standard-padding);
 }
 
+/* Text Section - Comes First on Mobile */
+.textSection {
+  order: 1; /* Ensure text appears first */
+  flex: 1.25;
+  font-family: Arial, sans-serif;
+  color: black;
+  padding-left: 0; /* Remove left padding on mobile */
+  padding-top: 2rem; /* Add top padding for spacing */
+}
+
+/* Gallery Section - Comes After Text on Mobile */
 .gallery {
+  order: 2; /* Ensure gallery appears after text */
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 2rem; /* Add margin to separate text and gallery */
 }
 
 .imageSection {
@@ -30,22 +44,14 @@
   width: 100%;
   height: auto;
   object-fit: cover;
-  /* cursor: none; */
 }
 
 .title {
-  font-size: clamp(35.06px, 2.02vw + 20.99px, 50.83px);
+  font-size: clamp(25px, 2.02vw + 20.99px, 35.06px); /* Adjusted for mobile */
   font-family: var(--font-benzin);
   font-weight: 400;
   line-height: 1;
   color: var(--color-text);
-}
-
-.textSection {
-  flex: 1.25;
-  font-family: Arial, sans-serif;
-  color: black;
-  padding-left: 6vw;
 }
 
 .description {
@@ -56,7 +62,7 @@
 }
 
 .description h2 {
-  font-size: clamp(25px, 0.79vw + 21.83px, 31.98px);
+  font-size: clamp(20px, 0.79vw + 21.83px, 25px); /* Adjusted for mobile */
   font-weight: 400;
   text-decoration: none;
   margin-bottom: 0.5rem;
@@ -64,7 +70,7 @@
 }
 
 .description p {
-  font-size: clamp(18px, 0.23vw + 17.35px, 20px);
+  font-size: clamp(16px, 0.23vw + 17.35px, 18px); /* Adjusted for mobile */
   margin-bottom: 0.75rem;
 }
 
@@ -76,10 +82,11 @@
   margin-bottom: 5px;
 }
 
+/* Header Section - Unchanged */
 .headerContainer {
-  display: flex; /* Set display to flex for row alignment */
+  display: flex;
   width: 100%;
-  align-items: center; /* Align items vertically in the center */
+  align-items: center;
 }
 
 .header {
@@ -169,4 +176,19 @@
 
 .languageButtons .activeButton {
   font-weight: 800;
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem; /* Reduce padding on smaller screens */
+  }
+
+  .textSection {
+    padding-left: 0; /* Remove left padding on mobile */
+  }
+
+  .gallery {
+    margin-top: 2rem; /* Add margin to separate text and gallery */
+  }
 }

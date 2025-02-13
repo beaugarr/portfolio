@@ -94,3 +94,66 @@
   font-size: 1.125rem;
   line-height: 1.5;
 }
+
+/* Responsive Styles for Tablets (768px to 1024px) */
+@media (max-width: 1024px) {
+  .name {
+    font-size: 6rem; /* Reduce font size for tablets */
+  }
+
+  .bracketText {
+    font-size: 1vw; /* Adjust font size for tablets */
+  }
+
+  .authorDiv {
+    height: 60vh; /* Reduce height for tablets */
+  }
+
+  .authorImage {
+    max-height: 100%; /* Adjust image height for tablets */
+  }
+
+  .textItem {
+    font-size: 1rem; /* Adjust font size for tablets */
+  }
+}
+
+/* Responsive Styles for Phones (up to 767px) */
+@media (max-width: 767px) {
+  .name {
+    font-size: 2.75rem; /* Further reduce font size for phones */
+    line-height: 0.75; /* Adjust line height for phones */
+    text-align: center;
+  }
+
+  .bracketWrapper {
+    width: 30vw; /* Increase width for better readability */
+  }
+
+  .bracketText {
+    font-size: 1.5vw; /* Adjust font size for phones */
+  }
+
+  .authorDiv {
+    flex-direction: column; /* Stack image and text vertically */
+    height: auto; /* Allow height to adjust based on content */
+  }
+
+  .authorImageWrapper {
+    justify-content: center; /* Center the image */
+    align-items: center; /* Center the image */
+  }
+
+  .authorImage {
+    max-height: 80%; /* Adjust image height for phones */
+  }
+
+  .authorTextWrapper {
+    flex: 1; /* Take full width */
+    padding: 1rem; /* Add padding for better spacing */
+  }
+
+  .textItem {
+    font-size: 0.875rem; /* Adjust font size for phones */
+  }
+}

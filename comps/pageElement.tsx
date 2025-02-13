@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "../styles/page.module.css";
 import { translations } from "@/utils/translations";
 import { useTheme } from "./themeContext";
+import useMobile from "@/utils/useMobile";
 
 interface PageElementProps {
   title: string;
@@ -26,6 +27,7 @@ const PageElement: React.FC<PageElementProps> = ({
   const scrollRef = useRef<HTMLDivElement>(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(true);
+  const { isPhone, isTablet } = useMobile();
   const { language } = useTheme();
   const t = translations[language];
 
@@ -72,12 +74,12 @@ const PageElement: React.FC<PageElementProps> = ({
         <div className={styles.details}>
           <div className={styles.spanDiv}>
             <span>
-              {t.location} <strong>{location}</strong>
+              {!isPhone && !isTablet && t.location} <strong>{location}</strong>
             </span>
           </div>
           <div className={styles.spanDiv}>
             <span>
-              {t.date} <strong>{date}</strong>
+              {!isPhone && !isTablet && t.date} <strong>{date}</strong>
             </span>
           </div>
         </div>

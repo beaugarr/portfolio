@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTheme } from "./themeContext";
 import { heroTexts } from "@/utils/translations";
 import { translations } from "@/utils/translations";
+import useMobile from "@/utils/useMobile";
 
 const Hero: React.FC = () => {
   const { language } = useTheme();
@@ -13,7 +14,7 @@ const Hero: React.FC = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const [wrapperBounds, setWrapperBounds] = useState({ width: 0, height: 0 });
   const textPositionsRef = useRef<{ top: number; left: number }[]>([]);
-
+  const { isPhone, isTablet } = useMobile();
 
   const isOverlapping = (
     newPosition: { top: number; left: number },
@@ -55,10 +56,7 @@ const Hero: React.FC = () => {
         const randomLeft = Math.random() * (bounds.width - 100);
         newPosition = { top: randomTop, left: randomLeft };
         retries++;
-      } while (
-        isOverlapping(newPosition, positions) &&
-        retries < maxRetries
-      );
+      } while (isOverlapping(newPosition, positions) && retries < maxRetries);
 
       if (retries < maxRetries) {
         positions.push(newPosition);
@@ -76,7 +74,10 @@ const Hero: React.FC = () => {
       setWrapperBounds({ width: bounds.width, height: bounds.height });
 
       if (textPositionsRef.current.length === 0) {
-        textPositionsRef.current = generateRandomPositions(bounds, texts.length);
+        textPositionsRef.current = generateRandomPositions(
+          bounds,
+          texts.length
+        );
       }
     }
   }, [texts.length]);
@@ -87,16 +88,20 @@ const Hero: React.FC = () => {
         <h1 className={styles.name}>MICHAŁ</h1>
         <div className={styles.surnameWrapper}>
           <h1 className={styles.name}>ZAGAJEWSKI</h1>
-          <div className={styles.bracketWrapper}>
-            <span className={styles.name}>[</span>
-            <div className={styles.bracketText}>
-              {t.firstLine}<br />
-              {t.secondLine}<br />
-              {/* {t.thirdLine}<br /> */}
-              {/* {t.fourthLine} */}
+          {!isPhone && !isTablet && (
+            <div className={styles.bracketWrapper}>
+              <span className={styles.name}>[</span>
+              <div className={styles.bracketText}>
+                {t.firstLine}
+                <br />
+                {t.secondLine}
+                <br />
+                {/* {t.thirdLine}<br /> */}
+                {/* {t.fourthLine} */}
+              </div>
+              <span className={styles.name}>]</span>
             </div>
-            <span className={styles.name}>]</span>
-          </div>
+          )}
         </div>
       </div>
       <div className={styles.authorDiv}>
@@ -110,38 +115,40 @@ const Hero: React.FC = () => {
             unoptimized={true}
           />
         </div>
-        <div className={styles.authorTextWrapper} ref={wrapperRef}>
-          {wrapperBounds.width > 0 &&
-            texts.map((item, index) => {
-              const position = textPositionsRef.current[index];
-              if (!position) return null; // Fallback in case of an issue
+        {!isPhone && !isTablet && (
+          <div className={styles.authorTextWrapper} ref={wrapperRef}>
+            {wrapperBounds.width > 0 &&
+              texts.map((item, index) => {
+                const position = textPositionsRef.current[index];
+                if (!position) return null; // Fallback in case of an issue
 
-              return (
-                <div
-                  key={index}
-                  className={styles.textItem}
-                  style={{
-                    position: "absolute",
-                    top: `${position.top}px`,
-                    left: `${position.left}px`,
-                  }}
-                >
-                  {item.link ? (
-                    <Link
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ textDecoration: "underline"}}
-                    >
-                      {item.text}
-                    </Link>
-                  ) : (
-                    item.text
-                  )}
-                </div>
-              );
-            })}
-        </div>
+                return (
+                  <div
+                    key={index}
+                    className={styles.textItem}
+                    style={{
+                      position: "absolute",
+                      top: `${position.top}px`,
+                      left: `${position.left}px`,
+                    }}
+                  >
+                    {item.link ? (
+                      <Link
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "underline" }}
+                      >
+                        {item.text}
+                      </Link>
+                    ) : (
+                      item.text
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+        )}
       </div>
     </div>
   );

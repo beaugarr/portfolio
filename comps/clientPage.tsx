@@ -66,7 +66,7 @@ const ClientPage: React.FC = () => {
     <div className={styles.container}>
       <Hero />
       {/* Sentinel element above PageBar */}
-      <div id="sentinel" style={{ height: "1px" }}></div>
+      <div id="sentinel" style={{ height: "1px" }} />
       <PageBar onFilterChange={setFilter} isExpanded={isExpanded} />
       <div className={styles.mainContent}>
         {filter === "SETTINGS" && <Settings />}
