@@ -86,31 +86,38 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch; /* Ensure children take full height */
   border-bottom: 0.5px solid var(--color-border);
-  height: var(--standard-padding);
+  min-height: var(--standard-padding);
+  height: auto; /* Allows dynamic height */
 }
 
 .details {
   display: flex;
   flex-direction: row;
-  height: 100%; /* Takes full height of the parent */
-  align-items: flex-end; /* Aligns content to the bottom */
+  height: 100%; /* Take full height of .header */
+  align-items: stretch; /* Make children take full height */
   justify-content: flex-start;
   border-left: 0.5px solid var(--color-border);
+  position: relative; /* Ensures it follows the parent’s height */
 }
 
 .spanDiv {
-  display: flex; /* Keeps flex display for bottom alignment */
-  align-items: center; /* Aligns text to the bottom */
-  height: 100%; /* Stretches span to full height of .details */
-  border-right: 0.5px solid var(--color-border); /* Vertical border */
-  padding-right: 1rem; /* Space to the right */
-  padding-left: 1rem; /* Space to the left */
-  position: relative; /* Needed for absolute positioning of inner text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto; /* Allow it to grow */
+  min-height: 100%; /* Ensure full height */
+  border-right: 0.5px solid var(--color-border);
+  position: relative; /* Ensures proper height inheritance */
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .spanDiv span {
+  display: flex;
+  align-items: center;
+  flex-grow: 1; /* Ensures content fills container */
   font-family: var(--font-cera);
   font-weight: 400;
   color: var(--color-text);
@@ -293,9 +300,12 @@
   .container {
     cursor: default;
   }
+
   .spanDiv {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    flex: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: left;
   }
 
   .spanDiv span {
