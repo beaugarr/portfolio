@@ -68,7 +68,7 @@ const PageElement: React.FC<PageElementProps> = ({
   return (
     <Link href={url} passHref className={styles.elementContainer}>
       <div className={styles.header}>
-        <div className={styles.spanDiv}>
+        <div className={`${styles.spanDiv} ${styles.title}`}>
           <h3>{title}</h3>
         </div>
         <div className={styles.details}>

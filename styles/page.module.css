@@ -83,41 +83,42 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
-  align-items: stretch; /* Ensure children take full height */
+  align-items: stretch;
   border-bottom: 0.5px solid var(--color-border);
   min-height: var(--standard-padding);
-  height: auto; /* Allows dynamic height */
+  height: auto;
 }
 
 .details {
   display: flex;
   flex-direction: row;
-  height: 100%; /* Take full height of .header */
-  align-items: stretch; /* Make children take full height */
+  height: 100%;
+  align-items: stretch;
   justify-content: flex-start;
   border-left: 0.5px solid var(--color-border);
-  position: relative; /* Ensures it follows the parent’s height */
+  position: relative;
 }
 
 .spanDiv {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: auto; /* Allow it to grow */
-  min-height: 100%; /* Ensure full height */
+  height: auto;
+  min-height: 100%; 
   border-right: 0.5px solid var(--color-border);
-  position: relative; /* Ensures proper height inheritance */
+  position: relative;
   padding-left: 1rem;
   padding-right: 1rem;
+  white-space: nowrap;
 }
 
 .spanDiv span {
   display: flex;
   align-items: center;
-  flex-grow: 1; /* Ensures content fills container */
+  flex-grow: 1;
   font-family: var(--font-cera);
   font-weight: 400;
   color: var(--color-text);
@@ -134,10 +135,55 @@
 }
 
 .spanDiv:last-child {
-  border-right: none; /* Removes border from the last span */
+  border-right: none;
 }
 
 .details strong {
+  color: var(--color-text);
+} */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: 0.5px solid var(--color-border);
+  width: 100%;
+}
+
+.spanDiv {
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  flex-grow: 1; /* Ensures title takes up available space */
+  justify-content: flex-start;
+}
+
+.details {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.details .spanDiv {
+  border-left: 0.5px solid var(--color-border);
+}
+
+.spanDiv span {
+  font-family: var(--font-cera);
+  font-weight: 400;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.spanDiv h3 {
+  font-family: var(--font-cera);
+  font-weight: 800;
+  font-size: 1rem;
   color: var(--color-text);
 }
 
@@ -299,22 +345,6 @@
 @media (max-width: 767px) {
   .container {
     cursor: default;
-  }
-
-  .spanDiv {
-    flex: 1;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    text-align: left;
-  }
-
-  .spanDiv span {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-  }
-
-  .spanDiv h3 {
-    font-size: 0.8rem;
   }
 
   .footerRight {
