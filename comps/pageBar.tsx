@@ -1,4 +1,3 @@
-// components/PageBar.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -16,58 +15,33 @@ const PageBar: React.FC<PageBarProps> = ({ onFilterChange, isExpanded }) => {
   const { language } = useTheme();
   const t = translations[language];
 
-  const handleClick = (index: number) => {
-    const newActiveIndex = activeIndex === index ? null : index; // Toggle selection
-    setActiveIndex(newActiveIndex);
+  const sections = [
+    { label: t.work, filter: "WORK" },
+    { label: t.life, filter: "LIFE" },
+    { label: t.settings, filter: "SETTINGS" },
+  ];
 
-    const filter =
-      newActiveIndex !== null
-        ? newActiveIndex === 0
-          ? "WORK"
-          : newActiveIndex === 1
-          ? "LIFE"
-          : newActiveIndex === 2
-          ? "SETTINGS"
-          : null
-        : null;
-    onFilterChange(filter);
+  const handleClick = (index: number) => {
+    const newActiveIndex = activeIndex === index ? null : index;
+    setActiveIndex(newActiveIndex);
+    onFilterChange(newActiveIndex !== null ? sections[newActiveIndex].filter : null);
   };
 
   return (
-    <div
-      id="pageBar"
-      className={`${styles.bar} ${isExpanded ? styles.expandedBar : ""}`}
-    >
-      <div
-        className={styles.barSection}
-        style={{
-          flex: activeIndex === 1 ? 2 : 1,
-          fontWeight: activeIndex === 1 ? 800 : 400,
-        }} // 40% width if active, 20% if not
-        onClick={() => handleClick(1)}
-      >
-        <h3 className={styles.barText}>{t.life}</h3>
-      </div>
-      <div
-        className={styles.barSection}
-        style={{
-          flex: activeIndex === 0 ? 2 : 1,
-          fontWeight: activeIndex === 0 ? 800 : 400,
-        }} // 40% width if active, 20% if not
-        onClick={() => handleClick(0)}
-      >
-        <h3 className={styles.barText}>{t.work}</h3>
-      </div>
-      <div
-        className={styles.barSection}
-        style={{
-          flex: activeIndex === 2 ? 2 : 1,
-          fontWeight: activeIndex === 2 ? 800 : 400,
-        }} // 40% width if active, 20% if not
-        onClick={() => handleClick(2)}
-      >
-        <h3 className={styles.barText}>{t.settings}</h3>
-      </div>
+    <div id="pageBar" className={`${styles.bar} ${isExpanded ? styles.expandedBar : ""}`}>
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className={styles.barSection}
+          style={{
+            flex: activeIndex === index ? 2 : 1,
+            fontWeight: activeIndex === index ? 800 : 400,
+          }}
+          onClick={() => handleClick(index)}
+        >
+          <h3 className={styles.barText}>{section.label}</h3>
+        </div>
+      ))}
     </div>
   );
 };

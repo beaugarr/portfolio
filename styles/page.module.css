@@ -36,12 +36,6 @@
   border-left: 0.25px solid var(--color-border);
   cursor: pointer;
   transition: flex 0.3s ease, border 0.3s ease, border-left 0.3s ease;
-  user-select: none;
-}
-
-.barSection * {
-  user-select: none;
-  -webkit-user-select: none; /* Safari */
 }
 
 .barSection:first-child {
