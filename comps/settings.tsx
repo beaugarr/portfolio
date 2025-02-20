@@ -11,7 +11,7 @@ const defaultColors: Colors = {
   barBackground: "#f5f5f5",
   text: "#171717",
   border: "#000000",
-  hoverBorder: "#ff1e18",
+  hoverBorder: "#00d9ff",
 };
 
 export default function Settings() {

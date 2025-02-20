@@ -21,7 +21,7 @@ const defaultColors = {
   barBackground: "#f5f5f5",
   text: "#171717",
   border: "#000000",
-  hoverBorder: "#7EFC00",
+  hoverBorder: "#00d9ff",
 };
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
