@@ -60,12 +60,15 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
   const descriptionHTML = marked(metadata.description || "");
 
   function handleGoBack() {
-    if (document.referrer && document.referrer.startsWith(window.location.origin)) {
+    if (
+      document.referrer &&
+      document.referrer.startsWith(window.location.origin)
+    ) {
       router.back();
     } else {
       router.push("/");
     }
-  }  
+  }
 
   function handleLanguageChange(lang: string) {
     setLanguage(lang);
@@ -96,16 +99,20 @@ const SubPageClient = ({ slug }: SubPageClientProps) => {
             <h3>{metadata.title}</h3>
           </div>
           <div className={styles.details}>
-            <div className={styles.spanDiv}>
-              <span>
-                {!isPhone && !isTablet && t.location} <strong>{metadata.location}</strong>
-              </span>
-            </div>
-            <div className={styles.spanDiv}>
-              <span>
-              {!isPhone && !isTablet && t.date} <strong>{metadata.date}</strong>
-              </span>
-            </div>
+            {!isPhone && (
+              <>
+                <div className={styles.spanDiv}>
+                  <span>
+                    {t.location} <strong>{metadata.location}</strong>
+                  </span>
+                </div>
+                <div className={styles.spanDiv}>
+                  <span>
+                    {t.date} <strong>{metadata.date}</strong>
+                  </span>
+                </div>
+              </>
+            )}
             <div className={styles.languageButtons}>
               <button
                 className={language === "pl" ? styles.activeButton : ""}
