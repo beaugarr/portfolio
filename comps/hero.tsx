@@ -113,6 +113,7 @@ const Hero: React.FC = () => {
             height={1}
             className={styles.authorImage}
             unoptimized={true}
+            priority
           />
         </div>
         {!isPhone && !isTablet && (

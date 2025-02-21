@@ -16,10 +16,12 @@ export async function GET(request: NextRequest) {
 
   // Fetch images
   const files = fs.readdirSync(directoryPath);
+
   const images = files
-    .filter((file) => /\.(jpg|jpeg|png|gif)$/.test(file))
+    .filter((file) => /\.(jpg|jpeg|png|gif|webp|mov)$/.test(file))
     .map((file, index) => ({ id: index + 1, src: `/content/${slug}/${file}` }));
 
+  console.log(images);
   // Fetch metadata
   const metadataFile = "metadata.json";
   const metadataPath = path.join(directoryPath, metadataFile);

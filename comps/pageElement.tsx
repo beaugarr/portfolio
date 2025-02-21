@@ -53,6 +53,7 @@ const PageElement: React.FC<PageElementProps> = ({
   };
 
   useEffect(() => {
+    console.log("Images:", images);
     checkScrollButtons();
     const container = scrollRef.current;
     if (container) {
@@ -116,8 +117,8 @@ const PageElement: React.FC<PageElementProps> = ({
             <Image
               src={image.src}
               alt={`Gallery Image ${image.id}`}
-              width={100}
-              height={100}
+              width={250}
+              height={400}
               className={styles.imageSectionImage}
               unoptimized={true}
             />

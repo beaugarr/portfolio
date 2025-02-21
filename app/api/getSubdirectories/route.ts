@@ -14,7 +14,7 @@ export async function GET() {
 
       const files = fs.readdirSync(subdirPath);
       const images = files
-        .filter((file) => /\.(jpg|jpeg|png|gif)$/.test(file))
+        .filter((file) => /\.(jpg|jpeg|png|gif|webp|mov)$/.test(file))
         .map((file, index) => ({ id: index + 1, src: `/content/${subdir}/${file}` }));
 
       const metadataFile = "metadata.json";
