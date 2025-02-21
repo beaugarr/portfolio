@@ -114,14 +114,29 @@ const PageElement: React.FC<PageElementProps> = ({
         )}
         {images.map((image) => (
           <div key={image.id} className={styles.imageSection}>
-            <Image
-              src={image.src}
-              alt={`Gallery Image ${image.id}`}
-              width={250}
-              height={400}
-              className={styles.imageSectionImage}
-              unoptimized={true}
-            />
+            {image.src.endsWith(".mov") || image.src.endsWith(".mp4") ? (
+              <video
+                width={250}
+                height={400}
+                className={styles.imageSectionImage}
+                muted
+                loop
+                autoPlay
+                playsInline
+              >
+                <source src={image.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <Image
+                src={image.src}
+                alt={`Gallery Image ${image.id}`}
+                width={250}
+                height={400}
+                className={styles.imageSectionImage}
+                unoptimized={true}
+              />
+            )}
           </div>
         ))}
         {showRightButton && (
