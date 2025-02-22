@@ -74,5 +74,7 @@ export const heroTexts: HeroTexts = {
     { text: "AI/ML", link: "" },
     { text: "Trading", link: "" },
     { text: "Kolarstwo", link: "" },
+    { text: "Quantative Trading", link: "" },
+    { text: "", link: "" },
   ],
 };
