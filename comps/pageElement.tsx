@@ -53,7 +53,6 @@ const PageElement: React.FC<PageElementProps> = ({
   };
 
   useEffect(() => {
-    console.log("Images:", images);
     checkScrollButtons();
     const container = scrollRef.current;
     if (container) {
