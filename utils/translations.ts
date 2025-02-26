@@ -62,15 +62,31 @@ type HeroTexts = {
 
 export const heroTexts: HeroTexts = {
   en: [
-    { text: "LinkedIn", link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/" },
+    {
+      text: "LinkedIn",
+      link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/",
+    },
     { text: "Instagram", link: "https://www.instagram.com/michal_zagajewski/" },
-    { text: "ComputerScience", link: "" },
     { text: "AI/ML", link: "" },
     { text: "Trading", link: "" },
     { text: "Cycling", link: "" },
+    { text: "Quantitative Trading", link: "" },
+    { text: "Skitouring", link: "" },
+    { text: "Freeride", link: "" },
+    { text: "Mountains", link: "" },
+    { text: "̶Q̶u̶a̶r̶t̶e̶r̶halfmarathoner", link: "" },
+    { text: "Artificial Intelligence", link: "" },
+    { text: "Kraków/Warsaw", link: "" },
+    { text: "Startups", link: "" },
+    { text: "Fullstack", link: "" },
+    { text: "Mobile Apps", link: "" },
+    { text: "Web Dev", link: "" },
   ],
   pl: [
-    { text: "Linkedin", link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/" },
+    {
+      text: "Linkedin",
+      link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/",
+    },
     { text: "Instagram", link: "https://www.instagram.com/michal_zagajewski/" },
     { text: "AI/ML", link: "" },
     { text: "Trading", link: "" },
@@ -85,6 +101,6 @@ export const heroTexts: HeroTexts = {
     { text: "Start-upy", link: "" },
     { text: "Fullstack", link: "" },
     { text: "Aplikacje mobilne", link: "" },
-    { text: "Web Development", link: "" },
+    { text: "Web Dev", link: "" },
   ],
 };

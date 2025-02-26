@@ -12,24 +12,44 @@ interface Position {
   left: number;
 }
 
+interface TextItem {
+  text: string;
+  link?: string | null;
+}
+
 const Hero: React.FC = () => {
   const { language } = useTheme();
   const t = translations[language];
-  const texts = heroTexts[language];
+  const texts: TextItem[] = heroTexts[language];
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const sampleTextRef = useRef<HTMLDivElement>(null);
   const [wrapperBounds, setWrapperBounds] = useState({ width: 0, height: 0 });
-  const textPositionsRef = useRef<{ top: number; left: number }[]>([]);
+  const [elementSize, setElementSize] = useState({ width: 100, height: 50 }); // Default size
+  const textPositionsRef = useRef<Position[]>([]);
   const { isPhone, isTablet } = useMobile();
 
-  const isOverlapping = (newPosition: Position, positions: Position[]): boolean => {
+  // Measure the size of a sample text element
+  useEffect(() => {
+    if (sampleTextRef.current) {
+      const { width, height } = sampleTextRef.current.getBoundingClientRect();
+      setElementSize({ width, height });
+    }
+  }, []);
+
+  const isOverlapping = (
+    newPosition: Position,
+    positions: Position[],
+    elementWidth: number,
+    elementHeight: number
+  ): boolean => {
     const padding = 15; // Padding between elements
-    const newRight = newPosition.left + 100; // Width of the element
-    const newBottom = newPosition.top + 50; // Height of the element
-  
+    const newRight = newPosition.left + elementWidth;
+    const newBottom = newPosition.top + elementHeight;
+
     return positions.some((position) => {
-      const existingRight = position.left + 100;
-      const existingBottom = position.top + 50;
-  
+      const existingRight = position.left + elementWidth;
+      const existingBottom = position.top + elementHeight;
+
       // Check if the new position overlaps with any existing position
       return (
         newPosition.left < existingRight + padding &&
@@ -39,46 +59,60 @@ const Hero: React.FC = () => {
       );
     });
   };
-  
+
   const generateRandomPositions = (
     bounds: { width: number; height: number },
-    count: number
+    texts: TextItem[],
+    elementWidth: number,
+    elementHeight: number
   ): Position[] => {
     const positions: Position[] = [];
-    const maxRetries = 20; // Maximum number of retries to find a non-overlapping position
+    const maxRetries = 50; // Maximum number of retries to find a non-overlapping position
     const padding = 15; // Padding between elements
     const containerPadding = 50; // Padding of the .authorTextWrapper container
-  
+
     // Calculate the available space inside the container (excluding padding)
     const availableWidth = bounds.width - 2 * containerPadding;
     const availableHeight = bounds.height - 2 * containerPadding;
-  
-    for (let i = 0; i < count; i++) {
+
+    for (let i = 0; i < texts.length; i++) {
       let retries = 0;
       let newPosition: Position;
       let overlap: boolean;
-  
+
       do {
         // Generate a random position within the available space, considering element size and padding
-        const randomTop = Math.random() * (availableHeight - 50 - padding * 2) + containerPadding + padding;
-        const randomLeft = Math.random() * (availableWidth - 100 - padding * 2) + containerPadding + padding;
+        const randomTop =
+          Math.random() * (availableHeight - elementHeight - padding * 2) +
+          containerPadding +
+          padding;
+        const randomLeft =
+          Math.random() * (availableWidth - elementWidth - padding * 2) +
+          containerPadding +
+          padding;
         newPosition = { top: randomTop, left: randomLeft };
-  
+
         // Check if the new position overlaps with existing positions
-        overlap = isOverlapping(newPosition, positions);
+        overlap = isOverlapping(newPosition, positions, elementWidth, elementHeight);
         retries++;
       } while (overlap && retries < maxRetries);
-  
+
       if (!overlap) {
         positions.push(newPosition);
       } else {
         console.warn("Max retries reached for position generation");
+        // Fallback: Place the element at the bottom-right corner
+        positions.push({
+          top: bounds.height - elementHeight - containerPadding,
+          left: bounds.width - elementWidth - containerPadding,
+        });
       }
     }
-  
+
     return positions;
   };
 
+  // Generate random positions when the container bounds or text length changes
   useEffect(() => {
     if (wrapperRef.current) {
       const bounds = wrapperRef.current.getBoundingClientRect();
@@ -87,14 +121,29 @@ const Hero: React.FC = () => {
       if (textPositionsRef.current.length === 0) {
         textPositionsRef.current = generateRandomPositions(
           bounds,
-          texts.length
+          texts,
+          elementSize.width,
+          elementSize.height
         );
       }
     }
-  }, [texts.length]);
+  }, [texts.length, elementSize]);
 
   return (
     <div className={styles.heroSection}>
+      {/* Hidden sample text element for measuring size */}
+      <div
+        ref={sampleTextRef}
+        style={{
+          position: "absolute",
+          visibility: "hidden",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Sample Text
+      </div>
+
+      {/* Rest of the component */}
       <div className={styles.textContainer}>
         <h1 className={styles.name}>MICHAŁ</h1>
         <div className={styles.surnameWrapper}>
@@ -107,8 +156,6 @@ const Hero: React.FC = () => {
                 <br />
                 {t.secondLine}
                 <br />
-                {/* {t.thirdLine}<br /> */}
-                {/* {t.fourthLine} */}
               </div>
               <span className={styles.name}>]</span>
             </div>
@@ -118,7 +165,7 @@ const Hero: React.FC = () => {
       <div className={styles.authorDiv}>
         <div className={styles.authorImageWrapper}>
           <Image
-            src={"/ja.jpeg"}
+            src={"/ja.webp"}
             alt={"Ja"}
             width={1}
             height={1}
