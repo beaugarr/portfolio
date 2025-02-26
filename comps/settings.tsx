@@ -42,6 +42,7 @@ export default function Settings() {
               backgroundColor: "var(--color-barBackground)",
               color: "var(--color-text)",
               borderColor: "var(--color-border)",
+              appearance: "none"
             }}
             className="w-full p-2 border border-gray-300 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
