@@ -4,6 +4,10 @@
   background-color: var(--color-background);
   user-select: none;
   cursor: url("/cursor.svg"), auto;
+  user-select: none;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
 }
 
 .mainContent {
@@ -22,6 +26,7 @@
   z-index: 15;
   margin: 0 var(--standard-padding);
   transition: margin 0.3s ease-in-out;
+  user-select: none;
 }
 
 .expandedBar {
