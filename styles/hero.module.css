@@ -74,6 +74,7 @@
   flex: 1.2;
   position: relative;
   background-color: var(--color-barBackground);
+  padding: 50px;
 }
 
 .authorImage {

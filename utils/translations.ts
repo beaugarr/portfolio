@@ -62,19 +62,29 @@ type HeroTexts = {
 
 export const heroTexts: HeroTexts = {
   en: [
-    { text: "Let's Collaborate", link: "https://linkedin.com" },
+    { text: "LinkedIn", link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/" },
+    { text: "Instagram", link: "https://www.instagram.com/michal_zagajewski/" },
     { text: "ComputerScience", link: "" },
     { text: "AI/ML", link: "" },
     { text: "Trading", link: "" },
     { text: "Cycling", link: "" },
   ],
   pl: [
-    { text: "Współpracujmy", link: "https://linkedin.com" },
-    { text: "Informatyka", link: "" },
+    { text: "Linkedin", link: "https://www.linkedin.com/in/michał-zagajewski-a02855272/" },
+    { text: "Instagram", link: "https://www.instagram.com/michal_zagajewski/" },
     { text: "AI/ML", link: "" },
     { text: "Trading", link: "" },
     { text: "Kolarstwo", link: "" },
     { text: "Quantative Trading", link: "" },
-    { text: "", link: "" },
+    { text: "Skitouring", link: "" },
+    { text: "Freeride", link: "" },
+    { text: "Góry", link: "" },
+    { text: "ć̶w̶i̶e̶r̶ć̶półmaratończyk", link: "" },
+    { text: "Sztuczna Inteligencja", link: "" },
+    { text: "Kraków/Warszawa", link: "" },
+    { text: "Start-upy", link: "" },
+    { text: "Fullstack", link: "" },
+    { text: "Aplikacje mobilne", link: "" },
+    { text: "Web Development", link: "" },
   ],
 };

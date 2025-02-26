@@ -7,6 +7,11 @@ import { heroTexts } from "@/utils/translations";
 import { translations } from "@/utils/translations";
 import useMobile from "@/utils/useMobile";
 
+interface Position {
+  top: number;
+  left: number;
+}
+
 const Hero: React.FC = () => {
   const { language } = useTheme();
   const t = translations[language];
@@ -16,55 +21,61 @@ const Hero: React.FC = () => {
   const textPositionsRef = useRef<{ top: number; left: number }[]>([]);
   const { isPhone, isTablet } = useMobile();
 
-  const isOverlapping = (
-    newPosition: { top: number; left: number },
-    positions: { top: number; left: number }[]
-  ) => {
-    const padding = 15;
-    const newTop = newPosition.top;
-    const newLeft = newPosition.left;
-    const newBottom = newTop + 50;
-    const newRight = newLeft + 100;
-
-    return positions.some(({ top, left }) => {
-      const existingTop = top;
-      const existingLeft = left;
-      const existingBottom = existingTop + 50;
-      const existingRight = existingLeft + 100;
-
-      return !(
-        newRight + padding < existingLeft ||
-        newLeft - padding > existingRight ||
-        newBottom + padding < existingTop ||
-        newTop - padding > existingBottom
+  const isOverlapping = (newPosition: Position, positions: Position[]): boolean => {
+    const padding = 15; // Padding between elements
+    const newRight = newPosition.left + 100; // Width of the element
+    const newBottom = newPosition.top + 50; // Height of the element
+  
+    return positions.some((position) => {
+      const existingRight = position.left + 100;
+      const existingBottom = position.top + 50;
+  
+      // Check if the new position overlaps with any existing position
+      return (
+        newPosition.left < existingRight + padding &&
+        newRight + padding > position.left &&
+        newPosition.top < existingBottom + padding &&
+        newBottom + padding > position.top
       );
     });
   };
-
+  
   const generateRandomPositions = (
     bounds: { width: number; height: number },
     count: number
-  ) => {
-    const positions: { top: number; left: number }[] = [];
-    const maxRetries = 50;
-
+  ): Position[] => {
+    const positions: Position[] = [];
+    const maxRetries = 20; // Maximum number of retries to find a non-overlapping position
+    const padding = 15; // Padding between elements
+    const containerPadding = 50; // Padding of the .authorTextWrapper container
+  
+    // Calculate the available space inside the container (excluding padding)
+    const availableWidth = bounds.width - 2 * containerPadding;
+    const availableHeight = bounds.height - 2 * containerPadding;
+  
     for (let i = 0; i < count; i++) {
       let retries = 0;
-      let newPosition;
+      let newPosition: Position;
+      let overlap: boolean;
+  
       do {
-        const randomTop = Math.random() * (bounds.height - 50);
-        const randomLeft = Math.random() * (bounds.width - 100);
+        // Generate a random position within the available space, considering element size and padding
+        const randomTop = Math.random() * (availableHeight - 50 - padding * 2) + containerPadding + padding;
+        const randomLeft = Math.random() * (availableWidth - 100 - padding * 2) + containerPadding + padding;
         newPosition = { top: randomTop, left: randomLeft };
+  
+        // Check if the new position overlaps with existing positions
+        overlap = isOverlapping(newPosition, positions);
         retries++;
-      } while (isOverlapping(newPosition, positions) && retries < maxRetries);
-
-      if (retries < maxRetries) {
+      } while (overlap && retries < maxRetries);
+  
+      if (!overlap) {
         positions.push(newPosition);
       } else {
         console.warn("Max retries reached for position generation");
       }
     }
-
+  
     return positions;
   };
 
