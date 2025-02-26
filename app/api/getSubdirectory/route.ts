@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
   const files = fs.readdirSync(directoryPath);
 
   const images = files
-    .filter((file) => /\.(jpg|jpeg|png|gif|webp|mov)$/.test(file))
+    .filter((file) => /\.(jpg|jpeg|png|gif|webp|mov|mp4|webm)$/.test(file))
     .map((file, index) => ({ id: index + 1, src: `/content/${slug}/${file}` }));
 
   // Fetch metadata

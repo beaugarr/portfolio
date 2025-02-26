@@ -113,7 +113,9 @@ const PageElement: React.FC<PageElementProps> = ({
         )}
         {images.map((image) => (
           <div key={image.id} className={styles.imageSection}>
-            {image.src.endsWith(".mov") || image.src.endsWith(".mp4") ? (
+            {image.src.endsWith(".mov") ||
+            image.src.endsWith(".mp4") ||
+            image.src.endsWith(".webm") ? (
               <video
                 width={250}
                 height={400}
@@ -124,6 +126,7 @@ const PageElement: React.FC<PageElementProps> = ({
                 playsInline
               >
                 <source src={image.src} type="video/mp4" />
+                <source src={image.src} type="video/webm" />
                 Your browser does not support the video tag.
               </video>
             ) : (
