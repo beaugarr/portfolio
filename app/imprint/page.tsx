@@ -1,6 +1,4 @@
 import styles from "@/styles/page.module.css";
-import { translations } from "@/utils/translations";
-import Link from "next/link";
 
 const Imprint = () => {
 
