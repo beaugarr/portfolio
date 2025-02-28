@@ -2,7 +2,6 @@ import styles from "@/styles/page.module.css";
 import { translations } from "@/utils/translations";
 import { useTheme } from "./themeContext";
 import Link from "next/link";
-import Image from "next/image";
 import { icons } from "@/utils/icons";
 
 const Footer = () => {
@@ -40,16 +39,16 @@ const Footer = () => {
         <p>{t.version}: 1.1.1</p>
       </div>
       <div className={styles.footerCenter}>
-        {socialLinks.map((link, index) => (
+        {socialLinks.map(({ href, label, icon }) => (
           <Link
-            key={index}
-            href={link.href}
+            key={href}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={link.label}
+            aria-label={label}
             className={styles.socialIcon}
           >
-            {link.icon}
+            {icon}
           </Link>
         ))}
       </div>
