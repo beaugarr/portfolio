@@ -117,6 +117,7 @@ const PageElement: React.FC<PageElementProps> = ({
             image.src.endsWith(".mp4") ||
             image.src.endsWith(".webm") ? (
               <video
+                key={image.src}
                 width={250}
                 height={400}
                 className={styles.imageSectionImage}
@@ -124,6 +125,7 @@ const PageElement: React.FC<PageElementProps> = ({
                 loop
                 autoPlay
                 playsInline
+                preload="auto"
               >
                 <source src={image.src} type="video/mp4" />
                 <source src={image.src} type="video/webm" />

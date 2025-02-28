@@ -1,22 +1,20 @@
-
-  {
-    "en": {
-      "title": "BANGLANGLIA",
-      "location": "Poland",
-      "date": "SEPTEMBER 2025",
-      "category": "WORK",
-      "type": "Project",
-      "url": "bangla",
-      "description": "This is a **detailed description** of the project.\n\nHere is a new paragraph with some *italic text*.\n\n\t- This is a bulleted list item.\n\t- Another item in the list.\n\nMore information can be found here."
-    },
-    "pl": {
-      "title": "BANGLAPOLSKA",
-      "location": "Polska",
-      "date": "WRZESIEŃ 2025",
-      "category": "WORK",
-      "type": "Projekt",
-      "url": "bangla",
-      "description": "This is a bulleted list item.\n\t- Another item in the list.\n\n More information can be found here."
-    }
+{
+  "en": {
+    "title": "BANGLA",
+    "location": "Poland",
+    "date": "SEPTEMBER 2025",
+    "category": "WORK",
+    "type": "Project",
+    "url": "bangla",
+    "description": "Mark Zuckerberg created Facebook at the age of 19. I co-created Stinder at the age of 17.\n\n## Stinder\nIt was one of those moments that stay with you for a lifetime. The launch of Stinder. I remember skipping classes with a group of friends to put up posters in the school hallways. Then, with our hearts pounding, we refreshed the database, watching the number of downloads grow minute by minute. People were genuinely impressed. To this day, when I visit my high school, many remember Stinder and are eager to talk about it.\n\n## How Did It Happen?\nIn our school, the prom was a big deal. In my class, there was only one girl, so finding a partner required some creativity. We came up with the idea of creating an app similar to Tinder. Sounds simple, right? But we knew it was a huge challenge. We had no experience, no mentors. We had to learn everything on our own – and we succeeded. We mastered advanced frameworks, configured servers, built databases, and finally deployed the app on iOS and Android. In six months, sacrificing many sleepless nights, we created something from scratch. It was pure magic.\n\n## This Is Not the End\nThe success of Stinder in our school gave us momentum. We decided to take it a step further – expand our reach to other high schools, then to universities, and in the future, create a giant that could compete with the biggest players. The app required significant changes, but this time we focused not only on the code but also on branding and marketing. We even organized our first corporate event, inviting representatives from several Warsaw high schools. A week later, Stinder was already active in many schools. It was our small revolutionary step.\n\nHowever…\nYou didn’t hear about us in the mainstream media. And you know what? It doesn’t matter. Because although we reached 23rd place in the AppStore rankings, gathered 700 downloads, and gained several dozen paid users – it wasn’t our final act. We didn’t manage to scale the project. But you know what’s most important? Looking back, the biggest obstacle was ourselves. Because in such ventures, it’s not just about technology or code. It’s about inspiration. About making people believe in your vision as much as you do. And we lacked that 'something' – the spark that makes people want to be part of something bigger. We didn’t build an effective campaign, we didn’t expand our reach. But this is not the end. It’s just the beginning. Because this project isn’t dead. It’s transforming. And soon, you’ll see its next chapter."
+  },
+  "pl": {
+    "title": "BANGLA",
+    "location": "Polska",
+    "date": "WRZESIEŃ 2025",
+    "category": "WORK",
+    "type": "Projekt",
+    "url": "bangla",
+    "description": "Mark Zuckerberg stworzył Facebooka w wieku 19 lat. Ja współtworzyłem Stindera w wieku 17 lat.\n\n## Stinder\nTo był jeden z tych momentów, które zapadają ci w pamięć na całe życie. Wypuszczenie Stindera. Pamiętam, jak z grupą przyjaciół zerwaliśmy się z lekcji, żeby rozwiesić plakaty na szkolnych korytarzach. Potem, z bijącym sercem, odświeżaliśmy bazę danych, obserwując, jak liczba pobrań rośnie z minuty na minutę. Ludzie byli naprawdę pod wrażeniem. Do dziś, kiedy odwiedzam moje liceum, wiele osób pamięta Stindera i chętnie o nim rozmawia.\n\n## Jak do tego doszło?\nW naszej szkole bal to była sprawa poważna. W mojej klasie była tylko jedna dziewczyna, więc znalezienie partnerki wymagało nieco kreatywności. Wpadliśmy na pomysł stworzenia aplikacji, która przypominałaby Tindera. Brzmi prosto, prawda? Ale wiedzieliśmy, że to ogromne wyzwanie. Nie mieliśmy doświadczenia, nie mieliśmy mentorów. Wszystkiego musieliśmy nauczyć się sami – i udało się. Opanowaliśmy zaawansowane frameworki, skonfigurowaliśmy serwery, zbudowaliśmy bazy danych, a na koniec wdrożyliśmy aplikację na iOS i Androida. W ciągu pół roku, poświęcając wiele nieprzespanych nocy, stworzyliśmy coś od zera. To była czysta magia.\n\n## To jeszcze nie koniec\nSukces Stindera w naszej szkole dał nam wiatr w żagle. Postanowiliśmy pójść krok dalej – rozszerzyć naszą działalność na inne licea, potem na studia, a w przyszłości stworzyć giganta, który mógłby konkurować z największymi. Aplikacja wymagała znaczących zmian, ale tym razem skupiliśmy się nie tylko na kodzie, ale też na brandingu i marketingu. Zorganizowaliśmy nawet pierwsze w naszym życiu wydarzenie firmowe, na które zaprosiliśmy przedstawicieli samorządów z kilku warszawskich liceów. Tydzień później Stinder działał już w wielu szkołach. To był nasz mały rewolucyjny krok.\n\n## Jednakże…\nNie usłyszałeś o nas w głównych mediach. I wiecie co? To nie ma znaczenia. Bo choć dotarliśmy do 23. miejsca w rankingu AppStore, zebraliśmy 700 pobrań i zdobyliśmy kilkudziesięciu płatnych użytkowników – to nie był nasz finał. Nie udało nam się rozwinąć projektu na większą skalę. Ale wiecie, co jest najważniejsze? Patrząc wstecz, największą przeszkodą byliśmy my sami. Bo w takich przedsięwzięciach nie chodzi tylko o technologię czy kod. Chodzi o inspirację. O to, by ludzie uwierzyli w twoją wizję tak bardzo, jak ty w nią wierzysz. A nam zabrakło tego „czegoś” – iskry, która sprawia, że ludzie chcą być częścią czegoś większego. Nie zbudowaliśmy skutecznej kampanii, nie rozszerzyliśmy naszego zasięgu. Ale to nie koniec. To tylko początek. Bo ten projekt nie umarł. On się transformuje. I wkrótce zobaczycie jego kolejną odsłonę."
   }
-  
+}
