@@ -56,9 +56,9 @@ const Footer = () => {
         <Link href="/imprint" className={styles.footerLink}>
           {t.imprint}
         </Link>
-        <Link href="/privacy" className={styles.footerLink}>
+        {/* <Link href="/privacy" className={styles.footerLink}>
           {t.privacy}
-        </Link>
+        </Link> */}
       </div>
     </footer>
   );
